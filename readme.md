@@ -1,1 +1,1 @@
-This is a empty latex template
+Our project report for SOEN 691E.
