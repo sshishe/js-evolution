@@ -30,7 +30,7 @@ We measure technical debt in each version of each project based on the SQALE(Sof
 		\item Insufficient comment density
 	\end{itemize}
 
-Let's consider 2 projects with the same amount of technical debt\footnote{Sample has been taken from: \url{ http://docs.sonarqube.org/display/SONAR/Technical+Debt}}:
+Let's consider 2 projects with the same amount of technical debt\footnote{Sample is taken from: \url{ http://docs.sonarqube.org/display/SONAR/Technical+Debt}}:
 Project Foo: 95 days and 80000 lines of code
 Project Bar: 95 days and 7000 lines of code
 The technical debt ratio formula is: "technical\_debt)" \/ "estimated\_development\_cost". And by default (this can be changed in the settings of SonarQube), the "estimated\_development\_cost" is computed as "LOC x 30 minutes". This gives (technical debt must be converted to minutes, and the number of hours in a day can also be customized):
