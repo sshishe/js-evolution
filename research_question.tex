@@ -20,20 +20,34 @@ Having five versions of each software that mentioned in \ref{eval_table}, we can
 		 Prior work showed that technical debt is unavoidable \cite{zazworka2013MTD} and that there are different types of technical debt, e.x. defect debt, design debt, testing debt, documentation debt, etc \cite{Seaman2011MMTD} . One of the most impacting types is design debt \cite{zazworka2011MTD}\cite{Fontana2012MTD} (a.k.a Bad Smells). A lot of effort are made to understand and manage TD in different domains as databases schemas \cite{Weber2014MTD} or even in the development community \cite{Tamburri2013CHASE}. However, to the best of our knowledge, very scarce research has been done in JavaScript applications from the technical debt perspective. Thus we collaborate with the technical debt landscape analyzing its behavior in JavaScript applications. 
 
 \noindent{\textbf{Approach:}}
+We measure technical debt in each version of each project based on the SQALE(Software Quality Assessment based on Lifecycle Expectations) methodology. We use a tool named SonarQube that will calculate technical debt for us as following: based on the predefined rules for each language in SonarQube the calculation takes into account following metrics:
 
-\rqiii
+	\section{Research Questions}
+	\begin{itemize}
+		\item Duplicated blocks
+		\item  Failed unit tests
+		\item Insufficient branch coverage by unit tests
+		\item Insufficient comment density
+	\end{itemize}
+
+Let's consider 2 projects with the same amount of technical debt\footnote{Sample has been taken from:\url{ http://docs.sonarqube.org/display/SONAR/Technical+Debt}}:
+Project Foo: 95 days and 80000 lines of code
+Project Bar: 95 days and 7000 lines of code
+The technical debt ratio formula is: "technical\_debt)" \/ "estimated\_development\_cost". And by default (this can be changed in the settings of SonarQube), the "estimated\_development\_cost" is computed as "LOC x 30 minutes". This gives (technical debt must be converted to minutes, and the number of hours in a day can also be customized):
+\par
+Project Foo: (95 x 8 x 60) \/ (80 000 x 30) = 1,9%
+\par
+Project Bar: (95 x 8 x 60) \/ (13 000 x 30) = 21,7%
+\par
+Here, this is obvious that project Foo is in a better shape than project Bar.
+
+\rqiii.
 
 \noindent{\textbf{Motivation:}}
 
 \noindent{\textbf{Approach:}}
 
 
-\begin{itemize}
-	\item How and in what extent can we measure object oriented metrics in JavaScript?
-	\item  By admitting the fact that JavaScript developers emulate object oriented style programming, we can empirically compare the differences between this language and mainstream programming languages.
-	\item Studying the evolution of JavaScript libraries in terms of software metrics to find out how mature developers are writing code in terms of obeying object oriented best practices.
-\end{itemize}
-	
 
 	
 	
