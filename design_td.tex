@@ -67,7 +67,9 @@
 		
 	\section{Related Work}
 	\label{sec:related_work}
-	
+	\everton{ use this paragraph in the related work for JavaScript. Note that it was just measuring metrics not evolution. but we have to mention it: 
+		Starts here:
+		Previous works on JavaScript calculate trivial metrics such as number of attributes (NOA), number of methods (NOM), Depth of Inheritance Tree (DIT) and number of children. Possible actions can be taken for: (1) recalculating and evaluating those metrics, (2) calculating advanced metric complexity of a function or file. }
 	% \begin{figure*}[thb!]
 	% 	\caption{Approach overview}
 	% 	\centering
@@ -83,7 +85,7 @@ We want to measure various aspects of the growth of these applications by having
 We use the term “source file” to mean any file whose name ends with “.js” and also we removed folders containing external libraries which is usually located at \textit{lib} or \textit{node\_modules}. 
 	
 	\section{Research Questions and techniques}
-	Lehman suggests using the number of “modules” as the best way to measure the size of a large software system \cite{637156}. However, we decided to use the number of uncommented lines of code (“uncommented LOC”) like the way Godfrey et al \cite{883030} did the evolution study on Linux Kernel. On the other hand we measure the comment lines and the ratio of comments to lines of codes, and based on that we can infer how much developers tend to put comments within their codes. We have to consider hidden corners that can mislead results, for example descriptive comments are totally different to the lines of codes that got commented because of refactoring or changes which consider as light weight code smells within code.
+	Lehman suggests using the number of “modules” as the best way to measure the size of a large software system \cite{637156}. However, we decided to use the number of uncommented lines of code (“uncommented LOC”) like the way Godfrey et al \cite{883030} did the evolution study on Linux Kernel. On the other hand we measure the comment lines and the ratio of comments to lines of codes, and based on that we can infer how much developers tend to put comments within their codes. We have to consider hidden corners that can mislead results, for example descriptive comments are totally different to the lines of codes that got commented because of refactoring or changes which consider as light-weight code smells within code.
 	
 
 	
