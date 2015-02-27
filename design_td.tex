@@ -19,6 +19,7 @@
 \usepackage{epstopdf}
 \usepackage{array}
 
+\usepackage{threeparttable}
 
 \newcommand{\shahriar}[1]{\textcolor{red}{{\it [Shahriar: #1]}}}
 \newcommand{\everton}[1]{\textcolor{blue}{{\it [Everton: #1]}}}
@@ -83,9 +84,54 @@
 We decide to examine the evolution of five JavaScript server-side packages known as Node Packages and five Java projects to compare how might the similarities and differences on how these two popular programming language can affect evolution of software systems. 
 We want to measure various aspects of the growth of these applications by having metrics such as number of files, lines of code, number of functions and statements. We also measure amount of duplications known as clones in terms of lines of codes, blocks and files. We measure the cyclomatic complexity over time which the metric is calculated as following. Whenever the control flow of a function splits, the complexity counter gets incremented by one. Each function has a minimum complexity of 1. The control flow can split by conditional statements like if/else, switch case and so on. This metric is also known as also known as McCabe metric
 We use the term “source file” to mean any file whose name ends with “.js” and also we removed folders containing external libraries which is usually located at \textit{lib} or \textit{node\_modules}. 
+
+\begin{table*}\label{eval_table}\centering
+	\caption{Proposed experiment projects with preliminary results of latest release}
+	\begin{threeparttable}
+		\scalebox{0.7}{
+			\begin{tabular}{cccccc}
+				\toprule
+				Name & Description &  {\# of JS files in latest release} & Number of Directories & Number of Functions & Number of Statements  \\
+				\addlinespace
+				
+				\midrule
+				NPM & Google's common JavaScript library & 165 & 32 & 1217 &5329  \\
+				\addlinespace
+				
+				
+						\midrule
+						Node MySQL & RequireJS is a JavaScript file and module loader  & 140 & 11 & 667 & 3317 \\			
+						\addlinespace 
+						
+							
+							\midrule
+							Esprima & ECMAScript parsing infrastructure for multipurpose analysis & 34 & 6 & 4862 & 29002  \\
+							\addlinespace		
+				
+				\midrule
+				Grunt & HTML enhanced for web apps & 31 & 9 & 251 & 1245 \\
+				\addlinespace
+				
+		
+				\midrule
+				Node Redis & Google chrome encryption extension implemented in JavaScript & 18 & 6 &  457 & 2537   \\	
+				\addlinespace 
+	
+			\end{tabular}
+		}
+	\end{threeparttable}
+\end{table*}
+
 	
 	\section{Research Questions and techniques}
-	Lehman suggests using the number of “modules” as the best way to measure the size of a large software system \cite{637156}. However, we decided to use the number of uncommented lines of code (“uncommented LOC”) like the way Godfrey et al \cite{883030} did the evolution study on Linux Kernel. On the other hand we measure the comment lines and the ratio of comments to lines of codes, and based on that we can infer how much developers tend to put comments within their codes. We have to consider hidden corners that can mislead results, for example descriptive comments are totally different to the lines of codes that got commented because of refactoring or changes which consider as light-weight code smells within code.
+	Lehman suggests using the number of “modules” as the best way to measure the size of a large software system \cite{637156}. However, we decided to use the number of uncommented lines of code (“uncommented LOC”) like the way Godfrey et al \cite{883030} did the evolution study on Linux Kernel. On the other hand we measure the comment lines and the ratio of comments to lines of codes, and based on that we can infer how much developers tend to put comments within their codes. We have to consider hidden corners that can mislead results, for example descriptive comments are totally different to the lines of codes that got commented because of refactoring or changes which consider as light-weight code smells within the code.
+	We are going to answer following research questions:
+		\section{Research Questions}
+		\begin{itemize}
+			\item How and in what extent can we measure object oriented metrics in JavaScript?
+			\item  By admitting the fact that JavaScript developers emulate object oriented style programming, we can empirically compare the differences between this language and mainstream programming languages.
+			\item Studying the evolution of JavaScript libraries in terms of software metrics to find out how mature developers are writing code in terms of obeying object oriented best practices.
+		\end{itemize}
 	
 
 	
