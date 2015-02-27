@@ -18,6 +18,16 @@
 \usepackage{balance}
 \usepackage{epstopdf}
 \usepackage{array}
+\usepackage{listings}
+\usepackage{color}
+\definecolor{lightgray}{rgb}{.9,.9,.9}
+\definecolor{darkgray}{rgb}{.4,.4,.4}
+\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+\usepackage{array,graphicx}
+\usepackage{booktabs}
+\usepackage{pifont}
+\usepackage{tablefootnote}
+\usepackage{footnote}
 
 \usepackage{threeparttable}
 
@@ -26,6 +36,51 @@
 \newcommand{\todo}[1]{\colorbox{yellow}{\textbf{[#1]}}}
 
 
+
+\lstdefinelanguage{JavaScript}{
+	keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+	keywordstyle=\color{blue}\bfseries,
+	ndkeywords={class, export, boolean, throw, implements, import, this},
+	ndkeywordstyle=\color{darkgray}\bfseries,
+	identifierstyle=\color{black},
+	sensitive=false,
+	comment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	commentstyle=\color{purple}\ttfamily,
+	stringstyle=\color{red}\ttfamily,
+	morestring=[b]',
+	morestring=[b]"
+}
+
+\lstset{
+	language=JavaScript,
+	backgroundcolor=\color{lightgray},
+	extendedchars=true,
+	basicstyle=\footnotesize\ttfamily,
+	showstringspaces=false,
+	showspaces=false,
+	numbers=left,
+	numberstyle=\footnotesize,
+	numbersep=5pt,
+	tabsize=2,
+	breaklines=true,
+	showtabs=false,
+	captionpos=b
+}
+
+\newcommand{\header}[1]{\par\medskip\noindent\textbf{#1.}}
+\newcommand{\crawljax}{\textsc{Crawljax}\xspace}
+
+\newcommand{\duptype}[1]{
+	\vspace{6pt}
+	\noindent
+	\ovalbox{
+		\begin{minipage}{8cm}
+			#1
+		\end{minipage}
+	}
+	\vspace{4pt}   
+}
 
 \newcommand{\conclusionbox}[1]{%
 	\vspace{2mm}
@@ -84,6 +139,66 @@
 We decide to examine the evolution of five JavaScript server-side packages known as Node Packages and five Java projects to compare how might the similarities and differences on how these two popular programming language can affect evolution of software systems. 
 We want to measure various aspects of the growth of these applications by having metrics such as number of files, lines of code, number of functions and statements. We also measure amount of duplications known as clones in terms of lines of codes, blocks and files. We measure the cyclomatic complexity over time which the metric is calculated as following. Whenever the control flow of a function splits, the complexity counter gets incremented by one. Each function has a minimum complexity of 1. The control flow can split by conditional statements like if/else, switch case and so on. This metric is also known as also known as McCabe metric
 We use the term “source file” to mean any file whose name ends with “.js” and also we removed folders containing external libraries which is usually located at \textit{lib} or \textit{node\_modules}. 
+
+\par We also measure the amount of object oriented principles that JavaScript developers use in their day to day software development. We think if we quantify the amount of reusable parts (i.e classes) in these projects, there are some valuable reasons laid down related to evolution behind these techniques. Consequently we use a project, known as JSDeodorant to find class declarations and places developers instantiate objects.
+In the rest of this section we describe how developers create objects in JavaScript and how they mimic object oriented class definitions without having direct language support in the specification of language.
+
+
+\subsection{Creation Types}
+In this section we try to explain different types of object creation no matter if they are built-in type or user-defined. 
+
+\duptype{\textbf{Type I}: \textit{Array Literal Expression}.}
+
+it creates a string array consisting of three creations possible in JavaScript elements and is assigned to variable “cars” using a binary operator (with two operand and equal operator). 
+\medskip
+\begin{lstlisting}[caption=Array literal expression]
+var cars = ['Saab', 'Volvo', 'BMW'];
+\end{lstlisting}
+A JavaScript array is initialized with the given elements, except in the case where a single argument is passed to the Array constructor and that argument is a number. Note that this special case only applies to JavaScript arrays created with the Array constructor, not array literals created with the bracket syntax.
+\\
+\break
+\duptype{\textbf{Type II}: \textit{Array Creation using \textbf{new} keyword}.}
+\vspace{1mm}
+
+The Array constructor function with using the “New” keyword creates an array of three elements and then assigned the created object to variable “planes” using binary operator. Using the more verbose method: \textit{new Array()} instead of array literal expression does have one extra option in the parameters: if you pass a number to the constructor, you will get an array of that length. 
+
+\medskip
+\begin{lstlisting}[caption=Array constructor]
+var planes= new Array('Boeing', 'Airbus', 'Bombardier');
+\end{lstlisting}
+
+
+\duptype{\textbf{Type III}: \textit{Object Literal Expression}.}
+
+The created object is basically singletons with variables/methods that are all public. An object literal is a comma-separated list of name-value pairs wrapped in curly braces. Object literals encapsulate data, enclosing it in a tidy package. This minimizes the use of global variables which can cause problems when combining code. If any of the syntax rules are broken, such as a missing comma or colon or curly brace, a JavaScript error will be triggered. No need to invoke constructors directly or maintain the correct order of arguments passed to functions. 
+\begin{lstlisting}[caption=Object literal expression]
+var myObj = {
+myMethod: function(params) {
+// ...do something
+}
+};
+
+\end{lstlisting}
+
+
+\duptype{\textbf{Type IV}: \textit{Function Constructor}.}
+
+In listing 5, shows function constructor, there we define a function that should start with an uppercase letter by convention (to inform call sites use this function with “new” keyword). The Function constructor creates a new Function object and in JavaScript every function is actually a Function object.
+\par 
+Parameters are Names to be used by the function as formal parameter names. Each must be a string that corresponds to a valid JavaScript identifier or a list of such strings separated with a comma. Functions created with the Function constructor do not create closures to their creation contexts; they always are created in the global scope.
+\par
+When running them, they will only be able to access their own local variables and global ones, not the ones from the scope in which the Function constructor was called.
+
+\begin{lstlisting}[caption=Function constructor]
+function Employee(name){
+this.name = name;
+this.getName = function(){
+return this.name;
+};	
+}
+var emp=new Employee('Nikolaos');
+\end{lstlisting}
+
 
 \begin{table*}\label{eval_table}\centering
 	\caption{Proposed experiment projects with preliminary results of latest release}
