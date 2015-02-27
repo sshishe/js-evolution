@@ -97,184 +97,41 @@
 \newcommand{\rqiii}{\textbf{RQ3  - How Technical Debt can influence the bug proneness of the source code in the project ?}}
 
 \begin{document}
-	\title{An Empirical Study on Evolution of Open Source JavaScript pr Projects}
-	
-	\author{\IEEEauthorblockN{Everton da S. Maldonado and Shahriar Rostami Dovom}
-		
-		\IEEEauthorblockA{Department of Computer Science and Software Engineering\\Concordia University,
-			Montreal, Canada\\
-			\url{everton.maldonado@gmail.com}, \url{shahriar.rostami@gmail.com}}}
-	
-	\maketitle
-	
-	\begin{abstract}
-		\shahriar{hello maldonado}
-		
-	\end{abstract}
-	
-	\IEEEpeerreviewmaketitle
-	
-	\section{Introduction}
-	\label{sec:introduction}
-		JavaScript is object-oriented to its core, with powerful, flexible high level programming capabilities. This language also supports functional and imperative programming styles. It is ubiquitous, it is fast and getting faster as compare to other web programming languages. Developers can craft it manually or they can target it by compiling from another language \footnote{TypeScript: http://www.typescriptlang.org/Tutorial} \footnote{CoffeeScript: http://coffeescript.org/}. It has been few years since JavaScript \footnote{NodeJS: http://nodejs.org/} is competing with other server side languages like (PHP, Ruby and etc.)
-		
-		\par
-		Source code analysis in object oriented and generally statically typed languages has been the interest of researchers for decades. However measuring object oriented metrics in JavaScript is scarce \cite{Richards:2010:ADB:1809028.1806598} \cite{6320536}.
-		
-	\section{Related Work}
-	\label{sec:related_work}
-	\everton{ use this paragraph in the related work for JavaScript. Note that it was just measuring metrics not evolution. but we have to mention it: 
-		Starts here:
-		Previous works on JavaScript calculate trivial metrics such as number of attributes (NOA), number of methods (NOM), Depth of Inheritance Tree (DIT) and number of children. Possible actions can be taken for: (1) recalculating and evaluating those metrics, (2) calculating advanced metric complexity of a function or file. }
-	% \begin{figure*}[thb!]
-	% 	\caption{Approach overview}
-	% 	\centering
-	% 	\label{fig:approach}
-	% 	\includegraphics[width=1\textwidth]{figures/Approach2}
-	% \end{figure*}
-	
-	
-	\section{Approach}
-	\label{sec:approach}
-We decide to examine the evolution of five JavaScript server-side packages known as Node Packages and five Java projects to compare how might the similarities and differences on how these two popular programming language can affect evolution of software systems.  Table \ref{eval_table} lists the projects and preliminary results of each project.
-We want to measure various aspects of the growth of these applications by having metrics such as number of files, lines of code, number of functions and statements. We also measure amount of duplications known as clones in terms of lines of codes, blocks and files. We measure the cyclomatic complexity over time which the metric is calculated as following. Whenever the control flow of a function splits, the complexity counter gets incremented by one. Each function has a minimum complexity of 1. The control flow can split by conditional statements like if/else, switch case and so on. This metric is also known as also known as McCabe metric
-We use the term “source file” to mean any file whose name ends with “.js” and also we removed folders containing external libraries which is usually located at \textit{lib} or \textit{node\_modules}. 
+\title{An Empirical Study on Evolution of Open Source JavaScript pr Projects}
 
-\par We also measure the amount of object oriented principles that JavaScript developers use in their day to day software development. We think if we quantify the amount of reusable parts (i.e classes) in these projects, there are some valuable reasons laid down related to evolution behind these techniques. Consequently we use a project, known as JSDeodorant to find class declarations and places developers instantiate objects.
-In the rest of this section we describe how developers create objects in JavaScript and how they mimic object oriented class definitions without having direct language support in the specification of language.
+\author{\IEEEauthorblockN{Everton da S. Maldonado and Shahriar Rostami Dovom}
+	
+	\IEEEauthorblockA{Department of Computer Science and Software Engineering\\Concordia University,
+		Montreal, Canada\\
+		\url{everton.maldonado@gmail.com}, \url{shahriar.rostami@gmail.com}}}
 
+\maketitle
 
-\subsection{Creation Types}
-In this section we try to explain different types of object creation no matter if they are built-in type or user-defined. 
+\begin{abstract}
+	\shahriar{hello maldonado}
+\end{abstract}
+	
+\section{Introduction}
+\label{sec:introduction}
+\input{introduction}
 
-\duptype{\textbf{Type I}: \textit{Array Literal Expression}.}
+\section{Related Work}
+\label{sec:related_work}
+\input{related_work}
 
-it creates a string array consisting of three creations possible in JavaScript elements and is assigned to variable “cars” using a binary operator (with two operand and equal operator). 
-\medskip
-\begin{lstlisting}[caption=Array literal expression]
-var cars = ['Saab', 'Volvo', 'BMW'];
-\end{lstlisting}
-A JavaScript array is initialized with the given elements, except in the case where a single argument is passed to the Array constructor and that argument is a number. Note that this special case only applies to JavaScript arrays created with the Array constructor, not array literals created with the bracket syntax.
-\\
-\break
-\duptype{\textbf{Type II}: \textit{Array Creation using \textbf{new} keyword}.}
-\vspace{1mm}
+\section{Approach}
+\label{sec:approach}
+\input{approach}
+	
+\section{Research Questions and techniques}
+\label{sec:rq}
+\input{research_question}
 
-The Array constructor function with using the “New” keyword creates an array of three elements and then assigned the created object to variable “planes” using binary operator. Using the more verbose method: \textit{new Array()} instead of array literal expression does have one extra option in the parameters: if you pass a number to the constructor, you will get an array of that length. 
+\section{Milestones}
+\label{milestones}
+\input{milestones}
+	
+\bibliographystyle{IEEEtran}
+\bibliography{design_td}
 
-\medskip
-\begin{lstlisting}[caption=Array constructor]
-var planes= new Array('Boeing', 'Airbus', 'Bombardier');
-\end{lstlisting}
-
-
-\duptype{\textbf{Type III}: \textit{Object Literal Expression}.}
-
-The created object is basically singletons with variables/methods that are all public. An object literal is a comma-separated list of name-value pairs wrapped in curly braces. Object literals encapsulate data, enclosing it in a tidy package. This minimizes the use of global variables which can cause problems when combining code. If any of the syntax rules are broken, such as a missing comma or colon or curly brace, a JavaScript error will be triggered. No need to invoke constructors directly or maintain the correct order of arguments passed to functions. 
-\begin{lstlisting}[caption=Object literal expression]
-var myObj = {
-myMethod: function(params) {
-// ...do something
-}
-};
-
-\end{lstlisting}
-
-
-\duptype{\textbf{Type IV}: \textit{Function Constructor}.}
-
-In listing 5, shows function constructor, there we define a function that should start with an uppercase letter by convention (to inform call sites use this function with “new” keyword). The Function constructor creates a new Function object and in JavaScript every function is actually a Function object.
-\par 
-Parameters are Names to be used by the function as formal parameter names. Each must be a string that corresponds to a valid JavaScript identifier or a list of such strings separated with a comma. Functions created with the Function constructor do not create closures to their creation contexts; they always are created in the global scope.
-\par
-When running them, they will only be able to access their own local variables and global ones, not the ones from the scope in which the Function constructor was called.
-
-\begin{lstlisting}[caption=Function constructor]
-function Employee(name){
-this.name = name;
-this.getName = function(){
-return this.name;
-};	
-}
-var emp=new Employee('Nikolaos');
-\end{lstlisting}
-
-
-\begin{table*}\label{eval_table}\centering
-	\caption{Proposed experiment projects with preliminary results of latest release}
-	\begin{threeparttable}
-		\scalebox{0.7}{
-			\begin{tabular}{cccccc}
-				\toprule
-				Name & Description &  {\# of JS files in latest release} & Number of Directories & Number of Functions & Number of Statements  \\
-				\addlinespace
-				
-				\midrule
-				NPM & a package manager for javascript & 165 & 32 & 1217 &5329  \\
-				\addlinespace
-				
-				
-						\midrule
-						Node MySQL & A pure node.js JavaScript Client implementing the MySql protocol.  & 140 & 11 & 667 & 3317 \\			
-						\addlinespace 
-						
-							
-							\midrule
-							Esprima & a high performance, standard-compliant JavaScript parser written in JavaScript  & 34 & 6 & 4862 & 29002  \\
-							\addlinespace		
-				
-				\midrule
-				Grunt & The JavaScript Task Runner & 31 & 9 & 251 & 1245 \\
-				\addlinespace
-				
-		
-				\midrule
-				Node Redis & redis client for node & 18 & 6 &  457 & 2537   \\	
-				\addlinespace 
-	
-			\end{tabular}
-		}
-	\end{threeparttable}
-\end{table*}
-
-	
-	\section{Research Questions and techniques}
-	Lehman suggests using the number of “modules” as the best way to measure the size of a large software system \cite{637156}. However, we decided to use the number of uncommented lines of code (“uncommented LOC”) like the way Godfrey et al \cite{883030} did the evolution study on Linux Kernel. On the other hand we measure the comment lines and the ratio of comments to lines of codes, and based on that we can infer how much developers tend to put comments within their codes. We have to consider hidden corners that can mislead results, for example descriptive comments are totally different to the lines of codes that got commented because of refactoring or changes which consider as light-weight code smells within the code.
-	We are going to answer following research questions:
-	
-	
-	\rqi
-	
-	\noindent{\textbf{Motivation:}}
-	
-	\noindent{\textbf{Approach:}}
-	
-	\rqii
-	
-	\noindent{\textbf{Motivation:}}
-	
-	\noindent{\textbf{Approach:}}
-	
-	\rqiii
-	
-	\noindent{\textbf{Motivation:}}
-	
-	\noindent{\textbf{Approach:}}
-	
-	
-		\begin{itemize}
-			\item How and in what extent can we measure object oriented metrics in JavaScript?
-			\item  By admitting the fact that JavaScript developers emulate object oriented style programming, we can empirically compare the differences between this language and mainstream programming languages.
-			\item Studying the evolution of JavaScript libraries in terms of software metrics to find out how mature developers are writing code in terms of obeying object oriented best practices.
-		\end{itemize}
-	
-
-	
-	
-	\label{sec:rq}
-	
-	\section{Milestones}
-	
-	\bibliographystyle{IEEEtran}
-	\bibliography{design_td}
 \end{document}
