@@ -5,3 +5,5 @@
 *.blg
 *.log
 *.gz
+*.pdf
+*.pdf.orig
