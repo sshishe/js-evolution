@@ -2,7 +2,7 @@
 We are going to answer following research questions:
 
 
-\rqi
+\noindent{\rqi}
 
 \noindent{\textbf{Motivation:}}
 We want to answer this question to explore how a statically strong typed language and a semi-functional, object oriented language with dynamic capability can affect projects quality. We will measure different metrics that we introduce in section \textit{Approach} such as line numbers, lines and number of function. We will also measure how developers use re-usable patterns such as class declaration and inheritance in their codes. Despite the fact that JavaScript developers use class declarations and as we mentioned there is no direct support in the language specification, we believe developers tend to mimic class declarations more and more in their code. If this hypothesis grounds, then we can infer what causes lead to this phenomena that developers of JavaScript change the way they are programming.
@@ -10,25 +10,25 @@ We want to answer this question to explore how a statically strong typed languag
 \noindent{\textbf{Approach:}}
 Having five versions of each software that mentioned in \ref{eval_table}, we can justify how and in what extent the software evolves in terms of those metrics. 
 
-\par
-\rqii
+
+\noindent{\rqii}
 
 \noindent{\textbf{Motivation:}}
-		 The term technical debt is used to express faults and non-optimal solutions made conscientiously in a software project in order to achieve a short-term goal like meeting urgent deadlines or fixing last minutes bugs. The metaphor plays an important role in the communication between developers and managers \cite{kruchten2013MTD}, as the financial model fits well to explain delicate scenarios, that otherwise, could lead to a heavy technical conversations that, most of the time, is proven to be unproductive for both sides.  
 		 
-		 \par
-		 Prior work showed that technical debt is unavoidable \cite{zazworka2013MTD} and that there are different types of technical debt, e.x. defect debt, design debt, testing debt, documentation debt, etc \cite{Seaman2011MMTD} . One of the most impacting types is design debt \cite{zazworka2011MTD}\cite{Fontana2012MTD} (a.k.a Bad Smells). A lot of effort are made to understand and manage TD in different domains as databases schemas \cite{Weber2014MTD} or even in the development community \cite{Tamburri2013CHASE}. However, to the best of our knowledge, very scarce research has been done in JavaScript applications from the technical debt perspective. Thus we collaborate with the technical debt landscape analyzing its behavior in JavaScript applications. 
+The term technical debt is used to express faults and non-optimal solutions made conscientiously in a software project in order to achieve a short-term goal like meeting urgent deadlines or fixing last minutes bugs. The metaphor plays an important role in the communication between developers and managers \cite{kruchten2013MTD}, as the financial model fits well to explain delicate scenarios, that otherwise, could lead to a heavy technical conversations that, most of the time, is proven to be unproductive for both sides.  
+		 
+Prior work shown that technical debt is unavoidable \cite{zazworka2013MTD} and that there are different types of technical debt, e.x. defect debt, design debt, testing debt, documentation debt, etc \cite{Seaman2011MMTD} . One of the most impacting types is design debt \cite{zazworka2011MTD}\cite{Fontana2012MTD} (a.k.a Bad Smells). A lot of effort are made to understand and manage TD in different domains as databases schemas \cite{Weber2014MTD} or even in the development community \cite{Tamburri2013CHASE}. However, to the best of our knowledge, very scarce research has been done in JavaScript applications from the technical debt perspective. Thus we collaborate with the technical debt landscape analyzing its behavior in JavaScript applications. 
 
 \noindent{\textbf{Approach:}}
 We measure technical debt in each version of each project based on the SQALE(Software Quality Assessment based on Lifecycle Expectations) methodology. We use a tool named SonarQube that will calculate technical debt for us as following: based on the predefined rules for each language in SonarQube the calculation takes into account following metrics:
 
-	\section{Research Questions}
-	\begin{itemize}
-		\item Duplicated blocks
-		\item  Failed unit tests
-		\item Insufficient branch coverage by unit tests
-		\item Insufficient comment density
-	\end{itemize}
+%	\section{Research Questions}
+%	\begin{itemize}
+%		\item Duplicated blocks
+%		\item Failed unit tests
+%		\item Insufficient branch coverage by unit tests
+%		\item Insufficient comment density
+%	\end{itemize}
 
 Let's consider 2 projects with the same amount of technical debt\footnote{Sample is taken from: \url{ http://docs.sonarqube.org/display/SONAR/Technical+Debt}}:
 Project Foo: 95 days and 80000 lines of code
@@ -41,14 +41,9 @@ Project Bar: (95 x 8 x 60) \/ (13 000 x 30) = 21,7%
 \par
 Here, this is obvious that project Foo is in a better shape than project Bar.
 
-\rqiii.
+\noindent{\rqiii}
 
-\noindent{\textbf{Motivation:}}
-
-\noindent{\textbf{Approach:}}
+\noindent{\textbf{Motivation:}} We know by experience that technical debt can bring short term advantages at cost of increased future maintenance. However is impossible to measure this impact in maintenance without knowing the defects that were caused by bad decisions in the past. We want to know how likely are files that contains technical debt to have bugs. Answering this question will take us further in the comprehension of the language and will give us meanings to quantify quality impact. 
 
 
-
-	
-	
-
+\noindent{\textbf{Approach:}} First, we need to identify the files in the project that contains technical debt. Then we mine the source code repository to obtain all the commits that are related with this dataset. Second, we mine the bug reports out of the issuer tracker. We relate these two datasets by searching the bug report id in  the commit messages. Finally we analyze with the quantity of bug reports related with files which was technical debt is higher than the quantity found in files which does not have technical debt. 
