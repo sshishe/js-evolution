@@ -9,64 +9,107 @@ We ran our empirical study on 10 open source applications, 5 of then are written
 
 \subsection{Project Selection}
 
+In selecting projects for our study, we used several criteria. First, we selected projects that are popular between developers and with a large number of users, since we want to analyze their evolution is important that they are active projects. Second, we used projects that has their source code and issuer tracker both hosted in GitHub. This makes easier to collect information about collaboration and measure popularity of the projects besides of that GitHub provides us an API to extract data from their repositories that will collaborate with the evolution analysis that we will run. Third we consider at this point projects with similar sizes. We will enhance this criteria with size and application domain in our final report so we can be more assertive when searching for insights about the evolution of the projects.
 
-\begin{table*}\label{eval_table}\centering
-	\caption{Proposed experiment projects with preliminary results of most recent version of release in our dataset}
-	\begin{threeparttable}
-		\scalebox{0.7}{
-			\begin{tabular}{ccccccc}
-				\toprule
-				Name & Description &  {\# of JS files in latest release} & Number of Directories & LOC \footnote{Lines of code}& Number of Functions & Number of Statements  \\
-				\addlinespace
-				\midrule
-				NPM & Package manager for JavaScript & 165 & 32 & 9,075 & 1,217 & 5,329  \\
-				\addlinespace
-				\midrule
-				Node MySQL & A pure node.js JavaScript Client implementing the MySql protocol.  & 140 & 11& 4,720 & 667 & 3,317 \\			
-				\addlinespace 	
-				\midrule
-				Esprima & A high performance, standard-compliant JavaScript parser written in JavaScript  & 34 & 6 & 83,385 & 4,862 & 29,002  \\
-				\addlinespace		
-				\midrule
-				Grunt & The JavaScript Task Runner & 31 & 9 & 2,361 & 251 & 1,245 \\
-				\addlinespace
-				\midrule
-				Node Redis & Redis client for node & 18 & 6 & 2,529 &  457 & 2,537   \\	
-				\addlinespace 
-				
-			\end{tabular}
-		}
-	\end{threeparttable}
+Regarding the lifespan of the analyzed projects we considered 5 previous full releases, regardless of the time that it took to be released. We consider a full release accordingly to the analyzed project. These releases are the ones with major changes in design and addition of new features as well, because of that we considered them as good candidates to conduct our study.  
+
+As mentioned before we ran our analysis in 10 open source projects, 5 of them were written in JavaScript and namely they are NPM a package manager for JavaScript, Node MySQL a pure node.js JavaScript Client implementing the MySql protocol, Esprima a high performance and standard-compliant JavaScript parser, Grunt a JavaScript task runner and Node Redis a Redis client for node. Table \ref{tab:java_script_proj_details} presents hight level data of these projects.
+
+In the same way the 5 Java projects analyzed were ElasticSearch a distributed, RESTful search engine, Gauva the Google Core Libraries for Java 6+, JodaTime is widely used as replacement for the Java date and time classes, Jsoup a Jason library for Java and finally JUnit an unit test framework for Java. Their data are presented in Table \ref{tab:java_proj_details}     
+
+\begin{table*}[!tbh]
+	\begin{center}
+		\caption{JavaScript Project Details }
+		\label{tab:java_script_proj_details}
+		\begin{tabular}{l| c c c c c}
+			\toprule
+			\textbf{Project} & \textbf{\# of JS files in latest release} & \textbf{Number of Directories} & \textbf{LOC\footnote{Lines of code}} & \textbf{Number of Functions} & \textbf{Number of Statements} \\ 
+			\midrule
+			NPM              & 165                                       & 32                             & 9,075                                & 1,217                        & 5,329                         \\
+			Node MySQL       & 140                                       & 11                             & 4,720                                & 667                          & 3,317                         \\
+			Esprima          & 34                                        & 6                              & 83,385                               & 4,862                        & 29,002                        \\
+			Grunt            & 31                                        & 9                              & 2,361                                & 251                          & 1,245                         \\
+			Node Redis       & 18                                        & 6                              & 2,529                                & 457                          & 2,537                         \\ 
+			\bottomrule
+		\end{tabular}
+	\end{center}
 \end{table*}
 
-\begin{table*}\label{tab:eval_java}\centering
-	\caption{Proposed experiment projects with preliminary results of most recent version of release in our dataset}
-	\begin{threeparttable}
-		\scalebox{0.7}{
-			\begin{tabular}{ccccccccc}
-				\toprule
-				Name & Description & {\# of java files in latest release} & Number of Directories & LOC & Number of Functions & classes & Number of Statements \\
-				\addlinespace
-				\midrule
-				ElasticSearch & Open Source, Distributed, RESTful Search Engine 
-				& 4,050 & 831 & 424,007 & 35,762 & 5,967 & 198,944 \\
-				\addlinespace
-				\midrule
-				Gauva & Google Core Libraries for Java 6+ & 799 & 28 & 90,401 & 11,769 & 1,644 & 32,698\\    
-				\addlinespace 
-				\midrule
-				JodaTime & Joda-Time is the widely used replacement for the Java date and time classes. & 327 & 15 & 84,855 & 9,560 & 473 & 50,609 \\
-				\addlinespace    
-				\midrule
-				Jsoup & Jason library for java & 80 & 14 & 13,672 & 1,487 & 154 & 7,980 \\
-				\addlinespace
-				\midrule
-				JUnit & Unit test framework for java & 392 & 73 & 26,079 & 3,479 & 1,063 & 7,972  \\   	
-				\addlinespace 
-			\end{tabular}
-		}
-	\end{threeparttable}
+\begin{table*}[!tbh]
+	\begin{center}
+		\caption{Java Project Details }
+		\label{tab:java_proj_details}
+		\begin{tabular}{l| c c c c c c}
+			\toprule
+			\textbf{Project} & \textbf{\# of JS files in latest release} & \textbf{Number of Directories} & \textbf{LOC\footnote{Lines of code}} & \textbf{Number of Functions} & \textbf{Classes} & \textbf{Number of Statements} \\ 
+			\midrule
+			ElasticSearch    & 4,050                                     & 831                            & 424,007                              & 35,762                       & 5,967            & 198,944                       \\
+			Gauva            & 799                                       & 28                             & 90,401                               & 11,769                       & 1,644            & 32,698                        \\
+			JodaTime         & 327                                       & 15                             & 84,855                               & 9,560                        & 473              & 50,609                        \\
+			Jsoup            & 80                                        & 14                             & 13,672                               & 1,487                        & 154              & 7,980                         \\
+			JUnit            & 392                                       & 73                             & 26,079                               & 3,479                        & 1,063            & 7,972                         \\ 
+			\bottomrule
+		\end{tabular}
+	\end{center}
 \end{table*}
+
+%\begin{table*}\label{eval_table}\centering
+%	\caption{Proposed experiment projects with preliminary results of most recent version of release in our dataset}
+%	\begin{threeparttable}
+%		\scalebox{0.7}{
+%			\begin{tabular}{llccccc}
+%				\toprule
+%				Project & Description &  {\# of JS files in latest release} & Number of Directories & LOC \footnote{Lines of code}& Number of Functions & Number of Statements  \\
+%				\addlinespace
+%				\midrule
+%				NPM & Package manager for JavaScript & 165 & 32 & 9,075 & 1,217 & 5,329  \\
+%				\addlinespace
+%				\midrule
+%				Node MySQL & A pure node.js JavaScript Client implementing the MySql protocol.  & 140 & 11& 4,720 & 667 & 3,317 \\			
+%				\addlinespace 	
+%				\midrule
+%				Esprima & A high performance, standard-compliant JavaScript parser written in JavaScript  & 34 & 6 & 83,385 & 4,862 & 29,002  \\
+%				\addlinespace		
+%				\midrule
+%				Grunt & The JavaScript Task Runner & 31 & 9 & 2,361 & 251 & 1,245 \\
+%				\addlinespace
+%				\midrule
+%				Node Redis & Redis client for node & 18 & 6 & 2,529 &  457 & 2,537   \\	
+%				\addlinespace 
+%				
+%			\end{tabular}
+%		}
+%	\end{threeparttable}
+%\end{table*}
+%
+%\begin{table*}\label{tab:eval_java}\centering
+%	\caption{Proposed experiment projects with preliminary results of most recent version of release in our dataset}
+%	\begin{threeparttable}
+%		\scalebox{0.7}{
+%			\begin{tabular}{llccccccc}
+%				\toprule
+%				Project & Description & {\# of java files in latest release} & Number of Directories & LOC & Number of Functions & classes & Number of Statements \\
+%				\addlinespace
+%				\midrule
+%				ElasticSearch & Open Source, Distributed, RESTful Search Engine 
+%				& 4,050 & 831 & 424,007 & 35,762 & 5,967 & 198,944 \\
+%				\addlinespace
+%				\midrule
+%				Gauva & Google Core Libraries for Java 6+ & 799 & 28 & 90,401 & 11,769 & 1,644 & 32,698\\    
+%				\addlinespace 
+%				\midrule
+%				JodaTime & Joda-Time is the widely used replacement for the Java date and time classes. & 327 & 15 & 84,855 & 9,560 & 473 & 50,609 \\
+%				\addlinespace    
+%				\midrule
+%				Jsoup & Jason library for java & 80 & 14 & 13,672 & 1,487 & 154 & 7,980 \\
+%				\addlinespace
+%				\midrule
+%				JUnit & Unit test framework for java & 392 & 73 & 26,079 & 3,479 & 1,063 & 7,972  \\   	
+%				\addlinespace 
+%			\end{tabular}
+%		}
+%	\end{threeparttable}
+%\end{table*}
 
 \subsection{Define set of metrics}
 
