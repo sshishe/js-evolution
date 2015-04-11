@@ -1,1 +1,0 @@
-Our project report for SOEN 691E.
