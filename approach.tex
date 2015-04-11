@@ -4,8 +4,41 @@
  	\label{fig:approach_overview}
  	\includegraphics[width=1\textwidth]{figures/approach_overview}
  \end{figure*}
+After selecting projects we have to find an automatic way to have all versions downloaded, and ready for analysis. Instead of downloading each version separately, we devise a viable and more efficient technique. We cloned latest release containing \textit{\.git} folder in it. Then we write a script to checkout each tag based on the tags that git gives us by running \textit{git tag}.
+\par
+Each version of each application has been analyzed with a powerful source code analyzer tool named SonarQube to extract metrics relevant to evolution of software. We also used this tool catch anti-patterns developers do in JavaScript and categorize them based on their severity.
+To have all these data get analyzed in SonarQube we had to deal few unexpected behavior. For example SonarQube does not consider release dates as the real release date. It just take out the date of the analysis that it fires to analyze a source. In this scenario we have 1065 releases with the release date of the day we ran analysis. So we fixed the issue to have proper release dates.
 
-Each application has been analyzed with a powerful source code analyzer tool named SonarQube to extract metrics relevant to evolution of software. We also used this tool catch anti-patterns developers do in JavaScript and categorize them based on their severity.
+\par After analyzing every tag in SonarQube we extract our chosen metrics that we found them proper for studying evolution of JavaScript projects. Metrics such as McCabe cyclomatic complexity,  comment line density, duplicated lines and blocks, number of directories and statements and etc. Table  \ref{tab:metrics_definition} defines sets of metrics that we used in our analysis.
+
+
+\begin{table*}[!hbt]
+	\begin{center}
+		\caption{Release details from each analyzed project}
+		\label{tab:metrics_definition}
+		\begin{tabular}{c| l l }
+			\toprule
+			\textbf{Metric} & \textbf{Definition} \\ \midrule
+			Lines of Code & The number of uncommented lines of code    \\
+			Complexity      & McCabe complexity    \\
+			Complexity/function & Average complexity by function. \\
+			Complexity/file & Average complexity by file \\
+			Comment lines  & Number of lines containing either comment or commented-out code. \\
+			Comment Lines (\%)   & Density of comment lines = Comment lines / (Lines of code + Comment lines) * 100    \\
+			Duplicated lines (\%)     & Density of duplication = Duplicated lines / Lines * 100    \\
+			Duplicated blocks   & Number of duplicated blocks of lines    \\
+			Directories   & Number of directories    \\
+			Functions            & Number of functions    \\
+			Statements      & Number of functions   \\
+			Issues    & Number of issues with severity of blocker, critical, major and minor   \\
+		SQALE Rating   & ?????????    \\
+			Technical debt    & Number of days it takes to fix issues with respect to their severity    \\
+			Technical debt ratio   & Division of SQALE Index by the estimation effort to re-develop your application from scratch.    \\
+		\end{tabular}
+	\end{center}
+\end{table*}
+
+
 
 \subsection{Project Selection}
 
@@ -17,6 +50,99 @@ As mentioned, before we ran our analysis in 10 open source projects, five of the
 
 In the same way the five Java projects analyzed were ElasticSearch is aa distributed, RESTful search engine, Gauva is the Google Core Libraries for Java 6+, JodaTime is widely used as replacement for the Java date and time classes, Jsoup is a Jason library for Java and finally JUnit is an unit test framework for Java. Their data are presented in Table \ref{tab:java_proj_details}     
 
+\begin{table*}[!tbh]
+	\begin{center}
+		\caption{JavaScript Project Details }
+		\label{tab:java_script_proj_details}
+		\begin{tabular}{l| c c c c c}
+			\toprule
+			\textbf{Project} & \textbf{\# of JS files in latest release} & \textbf{Number of Directories} & \textbf{LOC\footnote{Lines of code}} & \textbf{Number of Functions} & \textbf{Number of Statements} \\ 
+			\midrule
+			NPM              & 165                                       & 32                             & 9,075                                & 1,217                        & 5,329                         \\
+			Node MySQL       & 140                                       & 11                             & 4,720                                & 667                          & 3,317                         \\
+			Esprima          & 34                                        & 6                              & 83,385                               & 4,862                        & 29,002                        \\
+			Grunt            & 31                                        & 9                              & 2,361                                & 251                          & 1,245                         \\
+			Node Redis       & 18                                        & 6                              & 2,529                                & 457                          & 2,537                         \\ 
+			\bottomrule
+		\end{tabular}
+	\end{center}
+\end{table*}
+
+\begin{table*}[!tbh]
+	\begin{center}
+		\caption{Java Project Details }
+		\label{tab:java_proj_details}
+		\begin{tabular}{l| c c c c c c}
+			\toprule
+			\textbf{Project} & \textbf{\# of JS files in latest release} & \textbf{Number of Directories} & \textbf{LOC} & \textbf{Number of Functions} & \textbf{Classes} & \textbf{Number of Statements} \\ 
+			\midrule
+			ElasticSearch    & 4,050                                     & 831                            & 424,007                              & 35,762                       & 5,967            & 198,944                       \\
+			Gauva            & 799                                       & 28                             & 90,401                               & 11,769                       & 1,644            & 32,698                        \\
+			JodaTime         & 327                                       & 15                             & 84,855                               & 9,560                        & 473              & 50,609                        \\
+			Jsoup            & 80                                        & 14                             & 13,672                               & 1,487                        & 154              & 7,980                         \\
+			JUnit            & 392                                       & 73                             & 26,079                               & 3,479                        & 1,063            & 7,972                         \\ 
+			\bottomrule
+		\end{tabular}
+	\end{center}
+\end{table*}
+
+%\begin{table*}\label{eval_table}\centering
+%	\caption{Proposed experiment projects with preliminary results of most recent version of release in our dataset}
+%	\begin{threeparttable}
+%		\scalebox{0.7}{
+%			\begin{tabular}{llccccc}
+%				\toprule
+%				Project & Description &  {\# of JS files in latest release} & Number of Directories & LOC \footnote{Lines of code}& Number of Functions & Number of Statements  \\
+%				\addlinespace
+%				\midrule
+%				NPM & Package manager for JavaScript & 165 & 32 & 9,075 & 1,217 & 5,329  \\
+%				\addlinespace
+%				\midrule
+%				Node MySQL & A pure node.js JavaScript Client implementing the MySql protocol.  & 140 & 11& 4,720 & 667 & 3,317 \\			
+%				\addlinespace 	
+%				\midrule
+%				Esprima & A high performance, standard-compliant JavaScript parser written in JavaScript  & 34 & 6 & 83,385 & 4,862 & 29,002  \\
+%				\addlinespace		
+%				\midrule
+%				Grunt & The JavaScript Task Runner & 31 & 9 & 2,361 & 251 & 1,245 \\
+%				\addlinespace
+%				\midrule
+%				Node Redis & Redis client for node & 18 & 6 & 2,529 &  457 & 2,537   \\	
+%				\addlinespace 
+%				
+%			\end{tabular}
+%		}
+%	\end{threeparttable}
+%\end{table*}
+%
+%\begin{table*}\label{tab:eval_java}\centering
+%	\caption{Proposed experiment projects with preliminary results of most recent version of release in our dataset}
+%	\begin{threeparttable}
+%		\scalebox{0.7}{
+%			\begin{tabular}{llccccccc}
+%				\toprule
+%				Project & Description & {\# of java files in latest release} & Number of Directories & LOC & Number of Functions & classes & Number of Statements \\
+%				\addlinespace
+%				\midrule
+%				ElasticSearch & Open Source, Distributed, RESTful Search Engine 
+%				& 4,050 & 831 & 424,007 & 35,762 & 5,967 & 198,944 \\
+%				\addlinespace
+%				\midrule
+%				Gauva & Google Core Libraries for Java 6+ & 799 & 28 & 90,401 & 11,769 & 1,644 & 32,698\\    
+%				\addlinespace 
+%				\midrule
+%				JodaTime & Joda-Time is the widely used replacement for the Java date and time classes. & 327 & 15 & 84,855 & 9,560 & 473 & 50,609 \\
+%				\addlinespace    
+%				\midrule
+%				Jsoup & Jason library for java & 80 & 14 & 13,672 & 1,487 & 154 & 7,980 \\
+%				\addlinespace
+%				\midrule
+%				JUnit & Unit test framework for java & 392 & 73 & 26,079 & 3,479 & 1,063 & 7,972  \\   	
+%				\addlinespace 
+%			\end{tabular}
+%		}
+%	\end{threeparttable}
+%\end{table*}
 
 \subsection{Define set of metrics}
 
