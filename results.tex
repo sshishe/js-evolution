@@ -42,4 +42,34 @@
 
 \par
 To summarize the distance between first and last release of each project we use different metrics based on Table \ref{tab:metrics_definition} metrics and list them in Table \ref{tab:evolution_overview}. 
-As we can see Brackets first release contains 6271 lines of code but it ends up with 266801 lines of code in the last release. Bracket's last release is the most biggest evolved project with in four years of its existence. It started with 14 directories which in the last release it contains 179 directories. Brackets has 60 releases during its lifetime with 15871 commits. On the other hand NPM with 298 releases is the project with most releases in our dataset. It starts with 1979 lines of code where the last release exceeds to 19837 lines of code with 2231 functions added since the first release. To better understand the detail of evolution we depict the growth of LOC, directories, functions, statements and complexity. 
+As we can see Brackets first release contains 6271 lines of code but it ends up with 266801 lines of code in the last release. Bracket's last release is the most biggest evolved project with in four years of its existence. It started with 14 directories which in the last release it contains 179 directories. Brackets has 60 releases during its lifetime with 15871 commits. On the other hand NPM with 298 releases is the project with most releases in our dataset. It starts with 1979 lines of code where the last release exceeds to 19837 lines of code with 2231 functions added since the first release. To better understand the detail of evolution we depict the growth of LOC, directories, functions, statements and complexity.  
+
+% release_density 
+
+% function_density Figure Release density in NPM and Grunt where x is year and y is number of releases
+
+
+\par
+In terms of adopting object oriented practices we can infer that Sourcemap is the project that has function density of 10.2 with the lowest rank and Bootstrap as the most dense project that adopt re-usability by having 40.6 function density in lines of codes.
+The way developers define function can be varied in JavaScript code. Figure \ref{fig:function_density} indicates evolution of our five selected projects. Short after the project initiated, Bootstrap rocketed to have more than 300\%. The function density calculates based on the following formula: 
+\begin{center}
+$\frac{Number\space of\space Functions}{Lines \space of\space code}*100$
+\end{center}
+
+
+\par For number of developers we tried to gather data based on email of authors that commit code, however we found out that authors can have multiple emails register to one login id. As a result we tried to count the number of developers based on the Github usernames. 
+
+ \begin{figure}[thb!]
+ 	\caption{Function density evolution}
+ 	\label{fig:function_density}
+ 	\includegraphics[width=90mm,scale=0.5]{figures/function_density}
+ \end{figure}
+
+
+\par
+Having comments as one of the artifacts that can improve the readability of source code we examined it as metric of evolution.
+Brackets has the most comment lines with having 63923 comment lines followed by Ember.js with 14698 comment lines. The least documented project is CoffeeScript with having only 124 lines of documentation. What makes the resuls interesting, is the fact that CoffeeScript starts with 836 lines of comments in the first release but in the last release we have only 124 lines of code. CoffeeScript and Grunt are the only projects that adapt this pattern, while all the other projects show growing trend in number of comments during evolution.  
+
+
+\par
+% developers_release
