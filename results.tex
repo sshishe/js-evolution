@@ -42,28 +42,45 @@
 
 \par
 To summarize the distance between first and last release of each project we use different metrics based on Table \ref{tab:metrics_definition} metrics and list them in Table \ref{tab:evolution_overview}. 
-As we can see Brackets first release contains 6271 lines of code but it ends up with 266801 lines of code in the last release. Bracket's last release is the most biggest evolved project with in four years of its existence. It started with 14 directories which in the last release it contains 179 directories. Brackets has 60 releases during its lifetime with 15871 commits. On the other hand NPM with 298 releases is the project with most releases in our dataset. It starts with 1979 lines of code where the last release exceeds to 19837 lines of code with 2231 functions added since the first release. To better understand the detail of evolution we depict the growth of LOC, directories, functions, statements and complexity.  
+As we can see Brackets first release contains 6271 lines of code but it ends up with 266801 lines of code in the last release. Bracket's last release is the most biggest evolved project with in four years of its existence. It started with 14 directories which in the last release it contains 179 directories. Brackets has 60 releases during its lifetime with 15871 commits. On the other hand NPM with 298 releases is the project with most releases in our dataset. It starts with 1979 lines of code where the last release exceeds to 19837 lines of code with 2231 functions added since the first release. To better understand the detail of evolution we depict the growth of LOC, directories, functions, statements and complexity. Figure \ref{fig:release_density} exhibit an evolution of our projects.  
 
 % release_density 
-
-% function_density Figure Release density in NPM and Grunt where x is year and y is number of releases
-
+\begin{figure}[thb!]
+	\caption{Release density evolution}
+	\label{fig:release_density}
+	\includegraphics[width=90mm,scale=0.5]{figures/release_density}
+\end{figure}
 
 \par
-In terms of adopting object oriented practices we can infer that Sourcemap is the project that has function density of 10.2 with the lowest rank and Bootstrap as the most dense project that adopt re-usability by having 40.6 function density in lines of codes.
-The way developers define function can be varied in JavaScript code. Figure \ref{fig:function_density} indicates evolution of our five selected projects. Short after the project initiated, Bootstrap rocketed to have more than 300\%. The function density calculates based on the following formula: 
+Mongoose has fluctuated during its lifetime to the point that it has 24 releases at 2012 while it shows relatively 4 releases in 2014. We can infer that at beginning of its development due to the nature of changes and developer usage they release many versions. After Mongoose became more stable it has less releases per each three month. Bootstrap is one the libraries that has steady increase and decrease in its evolution while it has less release rate in compare to Mongoose. We use following formula to calculate release density in period of three months:
+
 \begin{center}
-$\frac{Number\space of\space Functions}{Lines \space of\space code}*100$
+	$Release Density= \frac{Number Of Release}{3 (Months Periods)}\ast 100$
 \end{center}
 
 
-\par For number of developers we tried to gather data based on email of authors that commit code, however we found out that authors can have multiple emails register to one login id. As a result we tried to count the number of developers based on the Github usernames. 
-
+% release_density 
  \begin{figure}[thb!]
  	\caption{Function density evolution}
  	\label{fig:function_density}
  	\includegraphics[width=90mm,scale=0.5]{figures/function_density}
  \end{figure}
+
+
+\par
+We depict the function density of the five chosen projects. We calculated the function density during time periods of three months.
+Figure \ref{fig:function_density} indicates evolution of our five selected projects. Mongoose starts at 2010 with almost 17\% function density and it has decreasing trend during its lifetime. It can indicates that after a while developers decided to refactor code to have remove excessive use of functions. Before mid 2012 till 2015 it shows interesting phenomena. The function density keeps same and due to the nature of Mongoose project which is a object modeling for MongoDB there were no any changes in their APIs. Generally APIs exposed by function declarations and function expressions in JavaScript. So the API keeps unchanged for a long period. We calculate function density as following:
+
+\begin{center}
+	$Function Density=  \frac{\left ( \frac{Number Of Functions}{Lines Of Code} \right)}{Number Of Releases}\ast 100$
+\end{center}
+
+\par
+Like Mongoose we have the same trend for Brackets which after a sharp decline during 2012 to 2013 the function density becomes unchanged for two years. These trends, again revealed projects become mature and established that they do not need to change their API. One might argue these project would be stop developing and the behavior is because they are in maintenance phase. But We have numerous release in each period and we cannot say these projects are abandoned.  
+ 
+
+
+\par For number of developers we tried to gather data based on email of authors that commit code, however we found out that authors can have multiple emails register to one login id. As a result we tried to count the number of developers based on the Github usernames. 
 
 
 \par
