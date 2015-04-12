@@ -84,6 +84,8 @@
 	\vspace{4pt}   
 }
 
+\newcommand*{\escape}[1]{\texttt{\textbackslash#1}}
+
 \newcommand{\conclusionbox}[1]{%
 	\vspace{2mm}
 	\framebox[0.45\textwidth][c]{%
@@ -93,6 +95,38 @@
 	}
 	\vspace{2mm}
 }
+
+\lstdefinelanguage{JavaScript}{
+	keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+	keywordstyle=\color{blue}\bfseries,
+	ndkeywords={class, export, boolean, throw, implements, import, this},
+	ndkeywordstyle=\color{darkgray}\bfseries,
+	identifierstyle=\color{black},
+	sensitive=false,
+	comment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	commentstyle=\color{purple}\ttfamily,
+	stringstyle=\color{red}\ttfamily,
+	morestring=[b]',
+	morestring=[b]"
+}
+
+\lstset{
+	language=JavaScript,
+	backgroundcolor=\color{lightgray},
+	extendedchars=true,
+	basicstyle=\footnotesize\ttfamily,
+	showstringspaces=false,
+	showspaces=false,
+	numbers=left,
+	numberstyle=\footnotesize,
+	numbersep=5pt,
+	tabsize=2,
+	breaklines=true,
+	showtabs=false,
+	captionpos=b
+}
+
 
 \newcommand{\rqi}{\textbf{RQ1 - How JavaScript projects evolve?}}
 \newcommand{\rqii}{\textbf{RQ2  - How Technical Debt can influence the change proneness of the source code in the project ?}}

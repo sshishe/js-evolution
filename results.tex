@@ -41,8 +41,17 @@
 \end{table*}
 
 \par
-To summarize the distance between first and last release of each project we use different metrics based on Table \ref{tab:metrics_definition} metrics and list them in Table \ref{tab:evolution_overview}. 
-As we can see Brackets first release contains 6271 lines of code but it ends up with 266801 lines of code in the last release. Bracket's last release is the most biggest evolved project with in four years of its existence. It started with 14 directories which in the last release it contains 179 directories. Brackets has 60 releases during its lifetime with 15871 commits. On the other hand NPM with 298 releases is the project with most releases in our dataset. It starts with 1979 lines of code where the last release exceeds to 19837 lines of code with 2231 functions added since the first release. To better understand the detail of evolution we depict the growth of LOC, directories, functions, statements and complexity. Figure \ref{fig:release_density} exhibit an evolution of our projects.  
+We use different metrics listed in Table \ref{tab:metrics_definition} metrics. Table \ref{tab:evolution_overview} shows the difference each project has in terms of metrics in comparison of first and last release.
+As we can see Brackets first release contains 6271 lines of code but it ends up with 266801 lines of code in the last release. Bracket's last release is the most biggest evolved project with in four years of its existence. It started with 14 directories which in the last release it contains 179 directories. Brackets has 60 releases during its lifetime with 15871 commits. On the other hand NPM with 298 releases is the project with most releases in our dataset. It starts with 1979 lines of code where the last release exceeds to 19837 lines of code with 2231 functions added since the first release. 
+
+\subsection{Release density}
+
+To better understand the detail of evolution we depict the growth of LOC, directories, functions, statements and complexity. Figure \ref{fig:release_density} exhibit an evolution of our projects.  
+\par
+Mongoose has fluctuated during its lifetime to the point that it has 24 releases at 2012 while it shows relatively 4 releases in 2014. We can infer that at beginning of its development due to the nature of changes and developer usage they release many versions. After Mongoose became more stable it has less releases per each three month. Bootstrap is one the libraries that has steady increase and decrease in its evolution while it has less release rate in compare to Mongoose. We use following formula to calculate release density in period of three months:
+\begin{center}
+	$Release Density= \frac{\sum Releases}{3 Months}$
+\end{center}
 
 % release_density 
 \begin{figure}[thb!]
@@ -51,12 +60,8 @@ As we can see Brackets first release contains 6271 lines of code but it ends up 
 	\includegraphics[width=90mm,scale=0.5]{figures/release_density}
 \end{figure}
 
-\par
-Mongoose has fluctuated during its lifetime to the point that it has 24 releases at 2012 while it shows relatively 4 releases in 2014. We can infer that at beginning of its development due to the nature of changes and developer usage they release many versions. After Mongoose became more stable it has less releases per each three month. Bootstrap is one the libraries that has steady increase and decrease in its evolution while it has less release rate in compare to Mongoose. We use following formula to calculate release density in period of three months:
 
-\begin{center}
-	$Release Density= \frac{Number Of Release}{3 (Months Periods)}\ast 100$
-\end{center}
+
 
 
 % release_density 
@@ -67,7 +72,7 @@ Mongoose has fluctuated during its lifetime to the point that it has 24 releases
  \end{figure}
 
 
-\par
+\subsection{Function density}
 We depict the function density of the five chosen projects. We calculated the function density during time periods of three months.
 Figure \ref{fig:function_density} indicates evolution of our five selected projects. Mongoose starts at 2010 with almost 17\% function density and it has decreasing trend during its lifetime. It can indicates that after a while developers decided to refactor code to have remove excessive use of functions. Before mid 2012 till 2015 it shows interesting phenomena. The function density keeps same and due to the nature of Mongoose project which is a object modeling for MongoDB there were no any changes in their APIs. Generally APIs exposed by function declarations and function expressions in JavaScript. So the API keeps unchanged for a long period. We calculate function density as following:
 
@@ -88,5 +93,175 @@ Having comments as one of the artifacts that can improve the readability of sour
 Brackets has the most comment lines with having 63923 comment lines followed by Ember.js with 14698 comment lines. The least documented project is CoffeeScript with having only 124 lines of documentation. What makes the resuls interesting, is the fact that CoffeeScript starts with 836 lines of comments in the first release but in the last release we have only 124 lines of code. CoffeeScript and Grunt are the only projects that adapt this pattern, while all the other projects show growing trend in number of comments during evolution.  
 
 
+\subsection{Number of developers in each release}
+The next characteristics we measure in evolution is to measure how much a project is community driver. We count number of developers having at least one commit in each period between releases. Figure \ref{fig:number_of_developers} and and . Request and Bootstrap are among projects with over 80 and 100 developers at individual peaks in development phase. Despite the fact that Underscore has fluctuated while evolving, at recent releases it shows that it gains some more attention and it becomes more community driven. Project q takes less attention as compare to other projects. It has never had more than 20 developers since its beginning in mid 2010.
 \par
-% developers_release
+Request project has one drastic fell down in mid 2013. When we explore that we found that they two release really closed to each other. The first one has more than 80 developers while the other has less 10 developers. This indicates that they found some major issues in former issue and few core developers instantly fix them and they released another version. One interesting phenomena that we observe is that number of released skewed to the right of each graph. Best practices in software engineering suggest having iterative and incremental development. Based on this fact we guess developers tend to have more smaller release in time rather than having one huge release every 6 months.  
+% release_density 
+\begin{figure}[thb!]
+	\caption{Number of developers per release}
+	\label{fig:number_of_developers}
+	\includegraphics[width=90mm,scale=0.5]{figures/number_of_developers}
+	\includegraphics[width=90mm,scale=0.5]{figures/number_of_developers_2}
+		\includegraphics[width=90mm,scale=0.5]{figures/number_of_developers_3}
+\end{figure}
+
+\subsection{Issues per release}
+
+
+\ref{fig:number_of_issues}
+jasfbaif a
+fa sufoas
+f uaspof as
+pfjas
+pfojaspf a
+sf as
+fas f
+as fas
+f asf a
+wi iofhsof
+ sfh o
+ fhasf
+  oasfh aoshfa
+  fasfasofa sif
+\begin{figure}[thb!]
+	\caption{Number of issues introduced in each release}
+	\label{fig:number_of_issues}
+	\includegraphics[width=90mm,scale=0.5]{figures/issues_per_release}
+	\includegraphics[width=90mm,scale=0.5]{figures/issues_per_release_2}
+	\includegraphics[width=90mm,scale=0.5]{figures/issues_per_release_3}
+\end{figure}
+
+\subsection{Time it takes to fix a bug}
+\subsection{JavaScript Rule violations}
+Using SonarQube various rules for finding code smells in JavaScript projects we are able to extract code smells with different severity. To explain it more we list following rules:
+
+\begin{itemize}
+	\item \textbf{"===" and "!=="}:
+The == and != operators do type coercion before comparing values. This is bad because it can mask type errors. For example, it evaluates \escape{t} \escape{r} \escape{n} == 0 as true.
+
+It is best to always use the side-effect-less === and !== operators instead. This issue is considered as \textit{Major} issue.
+
+		\begin{lstlisting}[caption=Noncompliant Code Example]
+		if (var == 'howdy') {...} // Noncompliant
+		\end{lstlisting}
+		
+		\begin{lstlisting}[caption=Compliant Solution]
+		if (var === 'howdy') {...}
+		\end{lstlisting}
+
+
+	\item \textbf{\textit{continue} should not be used}
+	continue is an unstructured control flow statement. It makes code less testable, less readable and less maintainable. Structured control flow statements such as if should be used instead. We considered this issue as \textit{Critical} issue.
+	
+		
+		\begin{lstlisting}[caption=Noncompliant Code Example]
+		for (i = 0; i < 10; i++) {
+		if (i == 5) {
+		continue;  /* Non-Compliant */
+		}
+		alert("i = " + i);
+		}
+		\end{lstlisting}
+		
+		\begin{lstlisting}[caption=Compliant Solution]
+		for (i = 0; i < 10; i++) {
+		if (i != 5) {  /* Compliant */
+		alert("i = " + i);
+		}
+		}
+		\end{lstlisting}
+	
+	
+	
+	
+	\item \textbf{ \textit{switch} statements should end with a \textit{default} clause}
+	he requirement for a final default clause is defensive programming. The clause should either take appropriate action or contain a suitable comment as to why no action is taken. It is a \textit{Major} issue.
+	
+
+		
+		\begin{lstlisting}[caption=Noncompliant Code Example]
+		switch (param) {  //missing default clause
+		case 0:
+		 doSomething();
+		break;
+		case 1:
+		 doSomethingElse();
+		 break;
+		}
+		
+		switch (param) {
+		 default: // default clause should be the last one
+		 error();
+		 break;
+		case 0:
+		 doSomething();
+		 break;
+		case 1:
+		 doSomethingElse();
+		 break;
+		}
+		\end{lstlisting}
+		
+		\begin{lstlisting}[caption=Compliant Solution]
+		switch (param) {
+		case 0:
+		 doSomething();
+		 break;
+		case 1:
+		 doSomethingElse();
+		 break;
+		default:
+		 error();
+		 break;
+		}
+		\end{lstlisting}	
+	
+	
+	\item \textbf{\textit{with} statements should not be used}
+	The use of the with keyword produces an error in JavaScript strict mode code. However, that is not the worst that can be said against with.
+	
+	Using with allows a short-hand access to an object's properties - assuming they are already set. But use with to access some property not already set in the object, and suddenly you are catapulted out of the object scope and into the global scope, creating or overwriting variables there. Since the effects of with are entirely dependent on the object passed to it, with can be dangerously unpredictable, and should never be used. It is a major issue.
+	
+		\begin{lstlisting}[caption=Noncompliant Code Example]
+	var x = 'a';
+	
+	var foo = {
+		y: 1
+	}
+	
+	with (foo) {  // Noncompliant
+		y = 4;  // updates foo.x
+		x = 3;  // does NOT add a foo.x property; updates x var in outer scope
+	}
+	print(foo.x + " " + x); // shows: undefined 3
+		\end{lstlisting}
+		
+			\begin{lstlisting}[caption=Compliant Solution]
+			var x = 'a';
+			
+			var foo = {
+			 y: 1
+			}
+			foo.y = 4;
+			foo.x = 3;
+			
+			print(foo.x + " " + x); // shows: 3 a
+			\end{lstlisting}
+			
+		
+	\item \textbf{Statements should be on separate lines}
+	For better readability, do not put more than one statement on a single line. It is a minor issue.
+	
+	\begin{lstlisting}[caption=Noncompliant Code Example]
+	if(someCondition) doSomething();
+	\end{lstlisting}
+	
+	\begin{lstlisting}[caption=Compliant Solution]
+if(someCondition) {
+doSomething();
+}
+	\end{lstlisting}
+	
+	
+\end{itemize}
