@@ -110,20 +110,8 @@ Request project has one drastic fell down in mid 2013. When we explore that we f
 
 
 \ref{fig:number_of_issues}
-jasfbaif a
-fa sufoas
-f uaspof as
-pfjas
-pfojaspf a
-sf as
-fas f
-as fas
-f asf a
-wi iofhsof
- sfh o
- fhasf
-  oasfh aoshfa
-  fasfasofa sif
+Having a software without bug means that software is never used by users. When it comes to bugs, we can find where and in what extent the software's problem are saturated. The module or component with more issues indicate that module is either too complex or is used directly by user and other components. Taking a look in each project and density of issues during releases can get us an insight into the details of projects. Figure \ref{fig:number_of_issues} shows numbers of issues introduced between releases.
+
 \begin{figure}[thb!]
 	\caption{Number of issues introduced in each release}
 	\label{fig:number_of_issues}
@@ -131,6 +119,40 @@ wi iofhsof
 	\includegraphics[width=90mm,scale=0.5]{figures/issues_per_release_2}
 	\includegraphics[width=90mm,scale=0.5]{figures/issues_per_release_3}
 \end{figure}
+
+By looking at the graph we can infer Bootstrap in special releases had around 1000 issues caught by testers and developers. Looking back to the nature of this project, it is obvious such a huge library which provides lots of functionalities can have numerous users whom they can report bugs while using this library in different scenarios. Moreover for the release in the mid of 2013 we can see the distance between that release and previous ones was significant. By looking at the data we found out that was one of the major releases that Bootstrap had. 
+
+\begin{table}[!hbt]
+	\begin{center}
+		\caption{Average time to fix a bug}
+		\label{tab:average_time_bugfix}
+		\begin{tabular}{l| c }
+			\toprule
+			\textbf{Project}  & \textbf{Release} \\ \midrule              
+			Coffeescript    & 46  \\
+			Less.js         & 113 \\
+			Npm             & 58  \\
+			Mongoose        & 44  \\
+			Underscore      & 14  \\
+			Node-mysql      & 47  \\
+			Q               & 30  \\
+			Request         & 105 \\
+			Ember.js        & 22  \\
+			Source-map      & 17  \\
+			Bootstrap       & 11  \\
+			Mocha           & 83  \\
+			Brackets        & 26  \\
+			Bower           & 30  \\
+			Grunt           & 28  \\  \bottomrule
+		\end{tabular}
+	\end{center}
+\end{table}
+
+To study more about these different projects we conduct another analysis to find the average time it takes to fix a bug that reported after releases. Table \ref{tab:average_time_bugfix} shows the result that the average time it takes to fix bugs in each of selected projects. 
+\par 
+What we found is that Bootstrap has the least number of days taken to fix a bug. Combining number of developers Bootstrap has based on Figure \ref{fig:number_of_developers} we found that this project has one of the most active communities among other projects. Less.js is a project that on average it takes 113 days to get a bug fixed. 
+\par
+Underscore has also a good response and fixed rate among projects. While we are comparing the rate of fixing a bug, we observe that Underscore is also one of the projects that has large number of developers contributing to the project. Having deeper observation into the data, we found out that number of developers are correlated to the time it takes to fix and close a bug.
 
 \subsection{Time it takes to fix a bug}
 \subsection{JavaScript Rule violations}
