@@ -128,7 +128,7 @@ By looking at the graph we can infer Bootstrap in special releases had around 10
 		\label{tab:average_time_bugfix}
 		\begin{tabular}{l| c }
 			\toprule
-			\textbf{Project}  & \textbf{Release} \\ \midrule              
+			\textbf{Project}  & \textbf{Average bug fix in days} \\ \midrule              
 			Coffeescript    & 46  \\
 			Less.js         & 113 \\
 			Npm             & 58  \\
@@ -148,13 +148,14 @@ By looking at the graph we can infer Bootstrap in special releases had around 10
 	\end{center}
 \end{table}
 
-To study more about these different projects we conduct another analysis to find the average time it takes to fix a bug that reported after releases. Table \ref{tab:average_time_bugfix} shows the result that the average time it takes to fix bugs in each of selected projects. 
+To study more about these different projects we conduct another analysis to find the average time it takes to fix a bug that reported after releases. We use Github issue tracker to extract all information related to bugs and we grouped them by releases. Then the average time it takes since the bug was created to the date it closed is calculated. Table \ref{tab:average_time_bugfix} shows the result that the average time in days that it takes to fix bugs in each of selected projects.  
 \par 
 What we found is that Bootstrap has the least number of days taken to fix a bug. Combining number of developers Bootstrap has based on Figure \ref{fig:number_of_developers} we found that this project has one of the most active communities among other projects. Less.js is a project that on average it takes 113 days to get a bug fixed. 
 \par
 Underscore has also a good response and fixed rate among projects. While we are comparing the rate of fixing a bug, we observe that Underscore is also one of the projects that has large number of developers contributing to the project. Having deeper observation into the data, we found out that number of developers are correlated to the time it takes to fix and close a bug.
 
-\subsection{Time it takes to fix a bug}
+\par For project \textit{q} it takes on average 30 days to fix bugs. By looking at number of developers we found out it has comparably less developers as compare to other projects but we have to take into account scale of project vary. A project that has few functionality migh has fewer bugs and as a consequence fewer time would it take to fix a bug. 
+
 \subsection{JavaScript Rule violations}
 Using SonarQube various rules for finding code smells in JavaScript projects we are able to extract code smells with different severity. To explain it more we list following rules:
 
