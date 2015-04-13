@@ -10,3 +10,43 @@ In this paper we present an empirical study on fifteen open source projects that
 The rest of the paper is organized as follows: In \ref{sec:applications} we explain what projects we are selected and how much big our dataset is in terms of years of development, commits and number of releases.
 
 
+\begin{table*}[!hbt]
+	\begin{center}
+		\caption{Bad smells breakdown from each analyzed project}
+		\label{tab:bad_smell_evolution_overview}
+		\begin{tabular}{l l| c c c c c }
+			\toprule
+			\textbf{Project}  & \textbf{Release} & \textbf{Blocker smells} & \textbf{Critical smells} & \textbf{Major smells} & \textbf{Minor smells} & \textbf{Info smells} \\ \midrule              
+			\multirow{2}*{Coffeescript}& First  0.6.1                   &           0 &           2 &          1692 &       31 &        0 \\
+			& Last   1.9.0                   &           0 &           0 &          3528 &       48 &        0 \\ \midrule
+			\multirow{2}*{Less.js     }& First  v1.0                    &           0 &           0 &           336 &       24 &        0 \\
+			& Last   v2.3.1                  &           3 &           0 &          4285 &      317 &       26 \\ \midrule
+			\multirow{2}*{Npm         }& First  v0.0.7                  &           0 &          34 &          1300 &       10 &       11 \\
+			& Last   v2.7.4                  &           0 &          18 &         12535 &       49 &        8 \\ \midrule
+			\multirow{2}*{Mongoose    }& First  0.0.1                   &           1 &           1 &           316 &        4 &        0 \\
+			& Last   4.0.1                   &          22 &          12 &          4773 &      161 &        8 \\ \midrule
+			\multirow{2}*{Underscore  }& First  1.0.3                   &           0 &           0 &           465 &       10 &        0 \\
+			& Last   1.8.0                   &           1 &           0 &          1000 &       19 &        0 \\ \midrule
+			\multirow{2}*{Node-mysql  }& First  v0.1.0                  &           2 &           0 &           230 &       10 &        2 \\
+			& Last   v2.6.0                  &          27 &           2 &           479 &       72 &        4 \\ \midrule
+			\multirow{2}*{Q           }& First  v0.1.0                  &           0 &           0 &            15 &        1 &        1 \\
+			& Last   v1.1.2                  &           0 &           1 &           319 &       41 &       18 \\ \midrule
+			\multirow{2}*{Request     }& First  v1.2.0                  &           0 &           0 &           115 &        2 &        0 \\
+			& Last   v2.54.0                 &           0 &           0 &          3798 &       20 &       71 \\ \midrule
+			\multirow{2}*{Ember.js    }& First  sc-v2.0.beta.1          &           0 &           1 &          8469 &      586 &       24 \\
+			& Last   v1.11.0-beta.5          &           0 &           0 &          1489 &      343 &       62 \\ \midrule
+			\multirow{2}*{Source-map  }& First  0.1.0                   &           1 &           1 &            91 &        5 &        1 \\
+			& Last   0.4.1                   &           6 &           1 &           268 &        7 &        1 \\ \midrule
+			\multirow{2}*{Bootstrap   }& First  v1.3.0                  &           0 &           0 &           523 &        7 &        0 \\
+			& Last   v3.3.2                  &           0 &           0 &          4777 &       49 &       55 \\ \midrule
+			\multirow{2}*{Mocha       }& First  0.0.1-alpha1            &           0 &           0 &           233 &        2 &        2 \\
+			& Last   2.2.0                   &           0 &           0 &          1675 &       76 &       10 \\ \midrule
+			\multirow{2}*{Brackets    }& First  sprint-1                &           0 &          12 &          1167 &       35 &       70 \\
+			& Last   release-1.2-prerelease1 &           2 &           3 &         40985 &     5248 &     1879 \\ \midrule
+			\multirow{2}*{Bower       }& First  v0.1.1                  &           0 &           0 &           169 &        1 &        0 \\
+			& Last   v1.4.0                  &           7 &         117 &           226 &       44 &       18 \\ \midrule
+			\multirow{2}*{Grunt       }& First  v0.4.0                  &         123 &           0 &           137 &       11 &       28 \\
+			& Last   v0.4.4                  &         142 &           0 &           155 &       10 &       26 \\ \bottomrule
+		\end{tabular}
+	\end{center}
+\end{table*}
