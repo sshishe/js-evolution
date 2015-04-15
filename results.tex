@@ -42,13 +42,13 @@
 
 \par
 We use different metrics listed in Table \ref{tab:metrics_definition} metrics. Table \ref{tab:evolution_overview} shows the difference each project has in terms of metrics in comparison of first and last release.
-As we can see Brackets first release contains 6271 lines of code but it ends up with 266801 lines of code in the last release. Bracket's last release is the most biggest evolved project with in four years of its existence. It started with 14 directories which in the last release it contains 179 directories. Brackets has 60 releases during its lifetime with 15871 commits. On the other hand NPM with 298 releases is the project with most releases in our dataset. It starts with 1979 lines of code where the last release exceeds to 19837 lines of code with 2231 functions added since the first release. 
+As we can observe Brackets' first release contains 6271 lines of code but it ends up with 266801 lines of code in the last release. Bracket's last release is the most biggest evolved project with in four years of its existence. It started with 14 directories while in the last release it contains 179 directories. Brackets has 60 releases during its lifetime with 15871 commits. On the other hand NPM with 298 releases is the project with most releases in our dataset. It starts with 1979 lines of code where the last release exceeds to 19837 lines of code with 2231 functions added since the first release. 
 
 \subsection{Release density}
 
 To better understand the detail of evolution we depict the growth of LOC, directories, functions, statements and complexity. Figure \ref{fig:release_density} exhibit an evolution of our projects.  
 \par
-Mongoose has fluctuated during its lifetime to the point that it has 24 releases at 2012 while it shows relatively 4 releases in 2014. We can infer that at beginning of its development due to the nature of changes and developer usage they release many versions. After Mongoose became more stable it has less releases per each three month. Bootstrap is one the libraries that has steady increase and decrease in its evolution while it has less release rate in compare to Mongoose. We use following formula to calculate release density in period of three months:
+Mongoose has fluctuated during its lifetime to the point that it has 24 releases at 2012 while it shows relatively 4 releases in 2014. We can infer that at beginning of its development due to the nature of changes and developer usage they release many versions.For Mongoose, when it became more stable it has less releases per each three month. Bootstrap is one of the libraries that had steady increase and decrease in its evolution, yet it has less release rate in compare to Mongoose. We use following formula to calculate release density in period of three months:
 \begin{center}
 	$Release Density= \frac{\sum Releases}{3 Months}$
 \end{center}
@@ -73,30 +73,33 @@ Mongoose has fluctuated during its lifetime to the point that it has 24 releases
 
 
 \subsection{Function density}
-We depict the function density of the five chosen projects. We calculated the function density during time periods of three months.
-Figure \ref{fig:function_density} indicates evolution of our five selected projects. Mongoose starts at 2010 with almost 17\% function density and it has decreasing trend during its lifetime. It can indicates that after a while developers decided to refactor code to have remove excessive use of functions. Before mid 2012 till 2015 it shows interesting phenomena. The function density keeps same and due to the nature of Mongoose project which is a object modeling for MongoDB there were no any changes in their APIs. Generally APIs exposed by function declarations and function expressions in JavaScript. So the API keeps unchanged for a long period. We calculate function density as following:
+We depict the function density of the five chosen projects that we found more interesting because of which shows different trends. We calculated the function density during time periods of three months.
+Figure \ref{fig:function_density} indicates evolution of our five selected projects. Mongoose starts at 2010 with almost 17\% function density and it has faced a decreasing trend during then. It indicates that after a while developers decided to refactor code to have  excessive use of functions removed. Moreover this project from mid 2012 to 2015 shows interesting phenomena. The function density keeps constant rate, but due to the nature of Mongoose project which is a object modeling library for MongoDB there were no any changes in their APIs after stability. Generally, APIs exposed by function declarations and function expressions in JavaScript. As a result the API keeps unchanged for a long period. 
+
+\par
+We calculate function density as following:
 
 \begin{center}
 	$Function Density=  \frac{\left ( \frac{Number Of Functions}{Lines Of Code} \right)}{Number Of Releases}\ast 100$
 \end{center}
 
 \par
-Like Mongoose we have the same trend for Brackets which after a sharp decline during 2012 to 2013 the function density becomes unchanged for two years. These trends, again revealed projects become mature and established that they do not need to change their API. One might argue these project would be stop developing and the behavior is because they are in maintenance phase. But We have numerous release in each period and we cannot say these projects are abandoned.  
+Like Mongoose we have the same trend for Brackets which after a dramatic decline during 2012 to 2013 the function density becomes unchanged for two years. These trends, again revealed the fact that projects become mature and established and they do not need to change their APIs while they are stable. One might argue these project would be stop developing and the behavior is because they are in maintenance phase or they are becoming legacy software. But We have numerous release followed which we cannot say these projects are abandoned.  
  
 
 
-\par For number of developers we tried to gather data based on email of authors that commit code, however we found out that authors can have multiple emails register to one login id. As a result we tried to count the number of developers based on the Github usernames. 
+\par For number of developers we tried to gather data based on email of authors that commit code, however we found out that authors can have multiple emails register to one login id. To overcome this problem we tried to count the number of developers based on the Github usernames. 
 
 
 \par
-Having comments as one of the artifacts that can improve the readability of source code we examined it as metric of evolution.
-Brackets has the most comment lines with having 63923 comment lines followed by Ember.js with 14698 comment lines. The least documented project is CoffeeScript with having only 124 lines of documentation. What makes the resuls interesting, is the fact that CoffeeScript starts with 836 lines of comments in the first release but in the last release we have only 124 lines of code. CoffeeScript and Grunt are the only projects that adapt this pattern, while all the other projects show growing trend in number of comments during evolution.  
+Having comments as one of the artifacts that can be a sign of improvement in the readability of source code we examined it as metric of evolution.
+Brackets has the most comment lines with having 63923 comment lines followed by Ember.js with 14698 comment lines. The less documented project is CoffeeScript with having only 124 lines of documentation. What makes the result interesting, is the fact that CoffeeScript starts with 836 lines of comments in the first release but in the last release we have only 124 lines of code. CoffeeScript and Grunt are the only projects that adapt this pattern, while all the other projects show growing trend in number of comments during evolution.  
 
 
 \subsection{Number of developers in each release}
-The next characteristics we measure in evolution is to measure how much a project is community driver. We count number of developers having at least one commit in each period between releases. Figure \ref{fig:number_of_developers} and and . Request and Bootstrap are among projects with over 80 and 100 developers at individual peaks in development phase. Despite the fact that Underscore has fluctuated while evolving, at recent releases it shows that it gains some more attention and it becomes more community driven. Project q takes less attention as compare to other projects. It has never had more than 20 developers since its beginning in mid 2010.
+The next characteristics we measure in evolution is to measure how much a project is community driven. We count number of developers having at least one commit in each period between releases. Figure \ref{fig:number_of_developers} show the number of developers in different time slots. Request and Bootstrap are among projects with over 80 and 100 developers in specific peaks. Despite the fact that Underscore has fluctuated so much, at recent releases it shows that it gains some more attention and it becomes more community driven in terms of number of volunteer contributors. Project \textit{q} takes less attention as compare to other projects. It has never had more than 20 developers since its beginning in mid 2010.
 \par
-Request project has one drastic fell down in mid 2013. When we explore that we found that they two release really closed to each other. The first one has more than 80 developers while the other has less 10 developers. This indicates that they found some major issues in former issue and few core developers instantly fix them and they released another version. One interesting phenomena that we observe is that number of released skewed to the right of each graph. Best practices in software engineering suggest having iterative and incremental development. Based on this fact we guess developers tend to have more smaller release in time rather than having one huge release every 6 months.  
+Request project had one drastic fell down in mid 2013. By exploring in more details, we found that they have two releases which are closed to each other. The first one has more than 80 developers while the other has less 10 developers. This indicates they found some major issues in former release and few core developers instantly fix them and another release followed by previous one. One interesting phenomena that we observe is the number of released skewed to the right of each graph. Best practices in software engineering suggest having iterative and incremental development and we found out developers tend to have more smaller release in time rather than having one huge release every 6 months.  
 % release_density 
 \begin{figure}[thb!]
 	\caption{Number of developers per release}
@@ -110,7 +113,7 @@ Request project has one drastic fell down in mid 2013. When we explore that we f
 
 
 \ref{fig:number_of_issues}
-Having a software without bug means that software is never used by users. When it comes to bugs, we can find where and in what extent the software's problem are saturated. The module or component with more issues indicate that module is either too complex or is used directly by user and other components. Taking a look in each project and density of issues during releases can get us an insight into the details of projects. Figure \ref{fig:number_of_issues} shows numbers of issues introduced between releases.
+Having a software without bug means that software is never used by users. When it comes to bugs, we can find where and in what extent the software's problem are saturated. The module or component with more issues is an indication of complex. Taking a look in each project and density of issues during releases get us an insight into on how quality JavaScript projects are developed. Figure \ref{fig:number_of_issues} shows numbers of issues introduced between releases.
 
 \begin{figure}[thb!]
 	\caption{Number of issues introduced in each release}
@@ -120,7 +123,8 @@ Having a software without bug means that software is never used by users. When i
 	\includegraphics[width=90mm,scale=0.5]{figures/issues_per_release_3}
 \end{figure}
 
-
+ Figure \ref{fig:avg_issue_fix} shows the average time it takes to get project fixed in all JavaScript projects.
+ 
 \begin{figure}[thb!]
 	\caption{Average time to fix issues}
 	\label{fig:avg_issue_fix}
@@ -129,7 +133,7 @@ Having a software without bug means that software is never used by users. When i
 \end{figure}
 
 
-By looking at the graph we can infer Bootstrap in special releases had around 1000 issues caught by testers and developers. Looking back to the nature of this project, it is obvious such a huge library which provides lots of functionalities can have numerous users whom they can report bugs while using this library in different scenarios. Moreover for the release in the mid of 2013 we can see the distance between that release and previous ones was significant. By looking at the data we found out that was one of the major releases that Bootstrap had. 
+Figure \ref{fig:number_of_issues} shows Bootstrap in special releases had around 1000 issues caught by testers and developers. Looking back to the nature of this project, it is obvious such a huge library which provides lots of functionalities would probably have numerous users whom they can report bugs. Moreover for the release in the mid of 2013 we can see the distance between the release and previous ones was significant. By looking at the data we found out that release was one of the major releases that Bootstrap had before. 
 
 \begin{table}[!hbt]
 	\begin{center}
@@ -157,16 +161,57 @@ By looking at the graph we can infer Bootstrap in special releases had around 10
 	\end{center}
 \end{table}
 
-To study more about these different projects we conduct another analysis to find the average time it takes to fix a bug that reported after releases. We use Github issue tracker to extract all information related to bugs and we grouped them by releases. Then the average time it takes since the bug was created to the date it closed is calculated. Table \ref{tab:average_time_bugfix} shows the result that the average time in days that it takes to fix bugs in each of selected projects.  
+To study more about these different projects we conduct another analysis to find the average time it takes to fix a bug that reported after releases. We use Github issue tracker to extract all information related to bugs and then we grouped them by releases. Then the average time it takes since the bug was created to the date it has closed is calculated. Table \ref{tab:average_time_bugfix} shows the result that the average time in days that it takes to fix bugs in each of selected projects.  
 \par 
-What we found is that Bootstrap has the least number of days taken to fix a bug. Combining number of developers Bootstrap has based on Figure \ref{fig:number_of_developers} we found that this project has one of the most active communities among other projects. Less.js is a project that on average it takes 113 days to get a bug fixed. 
+What interesting fact we found is that Bootstrap has the least number of days taken to fix a bug. Considering number of developers Bootstrap has based on Figure \ref{fig:number_of_developers} we found that this project has one of the most active communities among other projects. While Less.js is a project that on average it takes 113 days to get a bug fixed with fewer developers. 
 \par
-Underscore has also a good response and fixed rate among projects. While we are comparing the rate of fixing a bug, we observe that Underscore is also one of the projects that has large number of developers contributing to the project. Having deeper observation into the data, we found out that number of developers are correlated to the time it takes to fix and close a bug.
+\textit{Underscore} has a good response and fixed rate among projects. While we are comparing the rate of bug fixing, we observe that Underscore is also one of the projects that has large number of developers contributing to the project. By having deeper observation into the data, we found out that number of developers are positively correlated to the time it takes to fix and close a bug.
 
-\par For project \textit{q} it takes on average 30 days to fix bugs. By looking at number of developers we found out it has comparably less developers as compare to other projects but we have to take into account scale of project vary. A project that has few functionality migh has fewer bugs and as a consequence fewer time would it take to fix a bug. 
+\par For project \textit{q} it takes on average 30 days to fix bugs. By looking at number of developers we found out it has comparably less developers as compare to other projects but we have to take into account the fact of projects size and scale are in different order. A project that has fewer functionality might has fewer bugs and as a consequence less time would it take to fix a bug.
 
 \subsection{JavaScript Rule violations}
-Using SonarQube various rules for finding code smells in JavaScript projects we are able to extract code smells with different severity. To explain it more we list following rules:
+We use SonarQube to use its various rules for finding code smells in JavaScript projects. Utilizing SonarQube give us the ability to extract code smells with different severity. To explain it more we list following rules as an example for issues with different severity:
+
+	\begin{table*}[!hbt]
+		\begin{center}
+			\caption{Bad smells breakdown from each analyzed project}
+			\label{tab:bad_smell_evolution_overview}
+			\begin{tabular}{l l| c c c c c }
+				\toprule
+				\textbf{Project}  & \textbf{Release} & \textbf{Blocker smells} & \textbf{Critical smells} & \textbf{Major smells} & \textbf{Minor smells} & \textbf{Info smells} \\ \midrule              
+				\multirow{2}*{Coffeescript}& First  0.6.1                   &           0 &           2 &          1692 &       31 &        0 \\
+				& Last   1.9.0                   &           0 &           0 &          3528 &       48 &        0 \\ \midrule
+				\multirow{2}*{Less.js     }& First  v1.0                    &           0 &           0 &           336 &       24 &        0 \\
+				& Last   v2.3.1                  &           3 &           0 &          4285 &      317 &       26 \\ \midrule
+				\multirow{2}*{Npm         }& First  v0.0.7                  &           0 &          34 &          1300 &       10 &       11 \\
+				& Last   v2.7.4                  &           0 &          18 &         12535 &       49 &        8 \\ \midrule
+				\multirow{2}*{Mongoose    }& First  0.0.1                   &           1 &           1 &           316 &        4 &        0 \\
+				& Last   4.0.1                   &          22 &          12 &          4773 &      161 &        8 \\ \midrule
+				\multirow{2}*{Underscore  }& First  1.0.3                   &           0 &           0 &           465 &       10 &        0 \\
+				& Last   1.8.0                   &           1 &           0 &          1000 &       19 &        0 \\ \midrule
+				\multirow{2}*{Node-mysql  }& First  v0.1.0                  &           2 &           0 &           230 &       10 &        2 \\
+				& Last   v2.6.0                  &          27 &           2 &           479 &       72 &        4 \\ \midrule
+				\multirow{2}*{Q           }& First  v0.1.0                  &           0 &           0 &            15 &        1 &        1 \\
+				& Last   v1.1.2                  &           0 &           1 &           319 &       41 &       18 \\ \midrule
+				\multirow{2}*{Request     }& First  v1.2.0                  &           0 &           0 &           115 &        2 &        0 \\
+				& Last   v2.54.0                 &           0 &           0 &          3798 &       20 &       71 \\ \midrule
+				\multirow{2}*{Ember.js    }& First  sc-v2.0.beta.1          &           0 &           1 &          8469 &      586 &       24 \\
+				& Last   v1.11.0-beta.5          &           0 &           0 &          1489 &      343 &       62 \\ \midrule
+				\multirow{2}*{Source-map  }& First  0.1.0                   &           1 &           1 &            91 &        5 &        1 \\
+				& Last   0.4.1                   &           6 &           1 &           268 &        7 &        1 \\ \midrule
+				\multirow{2}*{Bootstrap   }& First  v1.3.0                  &           0 &           0 &           523 &        7 &        0 \\
+				& Last   v3.3.2                  &           0 &           0 &          4777 &       49 &       55 \\ \midrule
+				\multirow{2}*{Mocha       }& First  0.0.1-alpha1            &           0 &           0 &           233 &        2 &        2 \\
+				& Last   2.2.0                   &           0 &           0 &          1675 &       76 &       10 \\ \midrule
+				\multirow{2}*{Brackets    }& First  sprint-1                &           0 &          12 &          1167 &       35 &       70 \\
+				& Last   release-1.2-prerelease1 &           2 &           3 &         40985 &     5248 &     1879 \\ \midrule
+				\multirow{2}*{Bower       }& First  v0.1.1                  &           0 &           0 &           169 &        1 &        0 \\
+				& Last   v1.4.0                  &           7 &         117 &           226 &       44 &       18 \\ \midrule
+				\multirow{2}*{Grunt       }& First  v0.4.0                  &         123 &           0 &           137 &       11 &       28 \\
+				& Last   v0.4.4                  &         142 &           0 &           155 &       10 &       26 \\ \bottomrule
+			\end{tabular}
+		\end{center}
+	\end{table*}
 
 \begin{itemize}
 	\item \textbf{"===" and "!=="}:
@@ -296,48 +341,11 @@ doSomething();
 	\end{lstlisting}
 	
 	
-	
-	
-	
-	\begin{table*}[!hbt]
-		\begin{center}
-			\caption{Bad smells breakdown from each analyzed project}
-			\label{tab:bad_smell_evolution_overview}
-			\begin{tabular}{l l| c c c c c }
-				\toprule
-				\textbf{Project}  & \textbf{Release} & \textbf{Blocker smells} & \textbf{Critical smells} & \textbf{Major smells} & \textbf{Minor smells} & \textbf{Info smells} \\ \midrule              
-				\multirow{2}*{Coffeescript}& First  0.6.1                   &           0 &           2 &          1692 &       31 &        0 \\
-				& Last   1.9.0                   &           0 &           0 &          3528 &       48 &        0 \\ \midrule
-				\multirow{2}*{Less.js     }& First  v1.0                    &           0 &           0 &           336 &       24 &        0 \\
-				& Last   v2.3.1                  &           3 &           0 &          4285 &      317 &       26 \\ \midrule
-				\multirow{2}*{Npm         }& First  v0.0.7                  &           0 &          34 &          1300 &       10 &       11 \\
-				& Last   v2.7.4                  &           0 &          18 &         12535 &       49 &        8 \\ \midrule
-				\multirow{2}*{Mongoose    }& First  0.0.1                   &           1 &           1 &           316 &        4 &        0 \\
-				& Last   4.0.1                   &          22 &          12 &          4773 &      161 &        8 \\ \midrule
-				\multirow{2}*{Underscore  }& First  1.0.3                   &           0 &           0 &           465 &       10 &        0 \\
-				& Last   1.8.0                   &           1 &           0 &          1000 &       19 &        0 \\ \midrule
-				\multirow{2}*{Node-mysql  }& First  v0.1.0                  &           2 &           0 &           230 &       10 &        2 \\
-				& Last   v2.6.0                  &          27 &           2 &           479 &       72 &        4 \\ \midrule
-				\multirow{2}*{Q           }& First  v0.1.0                  &           0 &           0 &            15 &        1 &        1 \\
-				& Last   v1.1.2                  &           0 &           1 &           319 &       41 &       18 \\ \midrule
-				\multirow{2}*{Request     }& First  v1.2.0                  &           0 &           0 &           115 &        2 &        0 \\
-				& Last   v2.54.0                 &           0 &           0 &          3798 &       20 &       71 \\ \midrule
-				\multirow{2}*{Ember.js    }& First  sc-v2.0.beta.1          &           0 &           1 &          8469 &      586 &       24 \\
-				& Last   v1.11.0-beta.5          &           0 &           0 &          1489 &      343 &       62 \\ \midrule
-				\multirow{2}*{Source-map  }& First  0.1.0                   &           1 &           1 &            91 &        5 &        1 \\
-				& Last   0.4.1                   &           6 &           1 &           268 &        7 &        1 \\ \midrule
-				\multirow{2}*{Bootstrap   }& First  v1.3.0                  &           0 &           0 &           523 &        7 &        0 \\
-				& Last   v3.3.2                  &           0 &           0 &          4777 &       49 &       55 \\ \midrule
-				\multirow{2}*{Mocha       }& First  0.0.1-alpha1            &           0 &           0 &           233 &        2 &        2 \\
-				& Last   2.2.0                   &           0 &           0 &          1675 &       76 &       10 \\ \midrule
-				\multirow{2}*{Brackets    }& First  sprint-1                &           0 &          12 &          1167 &       35 &       70 \\
-				& Last   release-1.2-prerelease1 &           2 &           3 &         40985 &     5248 &     1879 \\ \midrule
-				\multirow{2}*{Bower       }& First  v0.1.1                  &           0 &           0 &           169 &        1 &        0 \\
-				& Last   v1.4.0                  &           7 &         117 &           226 &       44 &       18 \\ \midrule
-				\multirow{2}*{Grunt       }& First  v0.4.0                  &         123 &           0 &           137 &       11 &       28 \\
-				& Last   v0.4.4                  &         142 &           0 &           155 &       10 &       26 \\ \bottomrule
-			\end{tabular}
-		\end{center}
-	\end{table*}
-	
+
 \end{itemize}
+
+
+Table \ref{tab:bad_smell_evolution_overview} shows the evolution of bad smells with different severities. Most of projects has no or few Blocker smells.  Except project \textit{Grunt} we observed that all project start with zero or less than two blocker bugs. Project \textit{node-mysql} starts with 2 blocker issues and it had 27 in the last release. The weight of Major smells revealed that lacking of a good static code checker and compiler let developers to have more and more rule violations with our any warning from absent compiler in JavaScript. Although JavaScript developers use source code inspection tools such as \textit{JSLint} and \textit{JSHint} we still see rule violation in such a huge extent as compare to Java projects. Statically typed languages such as Java would not let developer to have piece of code that violates type casting rules or having an undeclared variable.
+	
+	
+	

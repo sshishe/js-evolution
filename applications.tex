@@ -1,13 +1,13 @@
 We select a long-lived projects to use in our case study based on the following criteria:
-We select projects that are popular between developers and are actively developed for at least three consecutive years.
-	We used projects that have their source code and issuer tracker both hosted on famous open source repository, GitHub. This makes it easier for us to collect information about collaboration and to measure popularity of the projects based on information we gather from website. Besides, GitHub provides us an API to extract data from their repositories to co-evaluate with the evolution analysis that we will run. 
+We select projects that are popular between developers and are actively developed for at least three consecutive years. There was an exception in this criterion which we select Grunt, because it is widely used by the community and other projects.
+	We used projects that have their source code and issuer tracker both hosted on famous open source repository, GitHub. This makes it easier for us to collect information about collaboration and to measure popularity of the projects based on information we gather from website. Although popularity of a project does not affect the study, we had chosen projects that are actively developed and used widely. Besides we found it GitHub quite handy in providing an API to extract data from their repositories.
 	Each project should have at least 20 unique tags on Github.
 	Large number of commits was also one of our criterion to select the project.
 
 Based on Samoladas\cite{Samoladas2010SAD}, majority of open source softwares are not developed after a short time period, makes them inappropriate for evolution analysis. Our dataset consist of total 
 57 years of history with 1065 releases. 
 
-Our study conducted on projects listed as following:
+Our study conducted on projects listed as follow with a brief description on each:
 \begin{itemize}
 	\item \textbf{CoffeeScript} is a superset language of JavaScript and it adds syntactic sugar inspired by Python, Ruby and Haskell.
 	\item \textbf{less.js} extends CSS with dynamic behavior such as variables, mixins, operations and functions. Less runs on both the server-side and client-side.
@@ -25,8 +25,7 @@ Our study conducted on projects listed as following:
 	\item \textbf{Bower} is a package manager for Web (specially client-side).
 	\item \textbf{Grunt} a JavaScript task runner integrated with node.js.	
 \end{itemize} 
-Due to the project's long history we have numerous versions of each project we show some statistics about projects.
-
+Due to the project's long history we have numerous versions of each project. Thus in Table \ref{tab:release_details} we explain different characteristics of each project such as year of the first release and last one, number of releases that were tagged using git and also number of commits regardless of different development branches.
 \begin{table}[!hbt]
 	\begin{center}
 		\caption{Release details from each analyzed project}
