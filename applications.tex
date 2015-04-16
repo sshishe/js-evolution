@@ -1,38 +1,38 @@
-We select a long-lived projects to use in our case study based on the following criteria:
-We select projects that are popular between developers and are actively developed for at least three consecutive years. There was an exception in this criterion which we select Grunt, because it is widely used by the community and other projects.
-	We used projects that have their source code and issuer tracker both hosted on famous open source repository, GitHub. This makes it easier for us to collect information about collaboration and to measure popularity of the projects based on information we gather from website. Although popularity of a project does not affect the study, we had chosen projects that are actively developed and used widely. Besides we found it GitHub quite handy in providing an API to extract data from their repositories.
-	Each project should have at least 20 unique tags on Github.
-	Large number of commits was also one of our criterion to select the project.
+We select long-lived projects to conduct our case study, and we based our project selection on the following criteria: We select projects that are popular between developers and that has been actively developed for at least three consecutive years. The only exception to this criterion was Grunt. Grunt is widely used by the community and in other projects as well. Although this specific project is not as actively developed as the others, it is still relevant to our analysis due its wide use.
 
-Based on Samoladas\cite{Samoladas2010SAD}, majority of open source softwares are not developed after a short time period, makes them inappropriate for evolution analysis. Our dataset consist of total 
-57 years of history with 1065 releases. 
+Other than that, we used projects that have their source code and issuer tracker both hosted on the famous open source repository, GitHub. This allow us to collect collaboration characteristics, and measure popularity of the projects based on the ranking information that the website provides. Although popularity of a project does not directly affect our study, it is a good indication that we had chosen projects that are actively developed and used widely. Besides that, GitHub provides a good API to extract data from their repositories.
 
-Our study conducted on projects listed as follow with a brief description on each:
+The last criterion is that each project should have at least 20 unique tags on Github, and a minimum of 300 commits. Again, we added Grunt as an exception to this rule. Although it has a low number of releases the number of commits are considerable.
+
+Accordingly with Samoladas\cite{Samoladas2010SAD}, the majority of open source softwares that are not developed after a short period of time, are inappropriate for evolution analysis. Based on all the above criteria we create a dataset with more than 57 years of development history, distributed in more than 1065 releases. Due to this long history we have numerous versions of each project. Thus, in Table \ref{tab:release_details} we explain different characteristics for each project such as the year of the first and last release analyzed, the total number of releases that we checkout using git, and also the number of commits regardless of which different branch it belongs. 
+
+Finally we provide a brief description of each one of the analyzed projects in our study:
+
 \begin{itemize}
 	\item \textbf{CoffeeScript} is a superset language of JavaScript and it adds syntactic sugar inspired by Python, Ruby and Haskell.
-	\item \textbf{less.js} extends CSS with dynamic behavior such as variables, mixins, operations and functions. Less runs on both the server-side and client-side.
+	\item \textbf{Less.js} extends CSS with dynamic behavior such as variables, mixins, operations and functions. Less runs on both the server-side and client-side.
 	\item \textbf{NPM} is the package manager for JavaScript either in browser or server-side.
-	\item \textbf {Mongoose} is an elegant Mongodb object modeling for node.js.
+	\item \textbf{Mongoose} is an elegant Mongodb object modeling for Node.js.
 	\item \textbf{Underscore} is a JavaScript library that provides a whole useful functional programming helpers without extending any built-in objects.
-	\item \textbf {Node-mysql} is a node.js driver for mysql.
-	\item \textbf {q} is a tool for creating and composing asynchronous promises in JavaScript.
-	\item \textbf {Request} is a simplified HTTP request client for node.js.
-	\item \textbf{Ember.js} is an open-source client-side JavaScript web application framework based on the model-view-controller (MVC) software architectural pattern.
+	\item \textbf{Node-mysql} is a node.js driver for mysql.
+	\item \textbf{Q} is a tool for creating and composing asynchronous promises in JavaScript. \todo{ask honey about that}
+	\item \textbf{Request} is a simplified HTTP request client for Node.js.
+	\item \textbf{Ember.js} is an open source client-side JavaScript web application framework based on the model-view-controller (MVC) software architectural pattern.
 	\item \textbf{Source-Map} is a library to generate and consume the source map.
 	\item \textbf{Bootstrap} intuitive, and powerful mobile first front-end framework for faster and easier web development.
-	\item \textbf{Mocha} is a feature-rich JavaScript test framework running on node.js and the browser, making asynchronous testing simple.
+	\item \textbf{Mocha} is a feature-rich JavaScript test framework running on Node.js and the browser, making asynchronous testing simple.
 	\item \textbf{Brackets} is a modern, open source text editor that understands web design (HTML, JavaScript and CSS).
 	\item \textbf{Bower} is a package manager for Web (specially client-side).
-	\item \textbf{Grunt} a JavaScript task runner integrated with node.js.	
+	\item \textbf{Grunt} a JavaScript task runner integrated with Node.js.	
 \end{itemize} 
-Due to the project's long history we have numerous versions of each project. Thus in Table \ref{tab:release_details} we explain different characteristics of each project such as year of the first release and last one, number of releases that were tagged using git and also number of commits regardless of different development branches.
+
 \begin{table}[!hbt]
 	\begin{center}
 		\caption{Release details from each analyzed project}
 		\label{tab:release_details}
 		\begin{tabular}{l| c c c c c c}
 			\toprule
-			\textbf{Project} & \textbf{First release} & \textbf{Last release}  & \textbf{\# Releases} & \textbf{\# Commits} \\ \midrule
+			\textbf{Project} & \textbf{1st} & \textbf{Last}  & \textbf{\# Releases} & \textbf{\# Commits} \\ \midrule
 			Coffeescript & 2010    & 2015  &    31 &      3967 \\
 			Less.js      & 2010    & 2015  &    38 &      2428 \\
 			Npm          & 2010    & 2015  &   298 &      5509 \\
