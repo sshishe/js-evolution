@@ -32,16 +32,27 @@
  	\end{center}
  \end{table*}
 
-In this section we explain in details each one of the steps that we executed in our study. As shown in Fig \ref{fig:approach_overview} we first prepared all tags of each project for run the source code analysis. Second we process all the tags in SonarQube. Third we extract the analyzed data from SonarQube and store it in our database. Fourth, we mine GitHub repositories to retrieve commit information and issues. Finally we process the data and run our analysis to answer the research questions.  \todo{create new approach figure}
+In this section we explain in details each one of the steps that we executed in our study. As shown in Fig \ref{fig:approach_overview} we first prepared all tags to run the source code analysis. Second we process all the tags in SonarQube. Third we extract the analyzed data from SonarQube and store it in our database. Fourth, we mine GitHub repositories to retrieve commit information and issues. Finally we process the data and run our analysis to answer the research questions.  \todo{create new approach figure}
  
 \subsection{Create tags}
 
-After selecting projects we had to find an automatic way to have all versions checked out, and ready for analysis. Instead of downloading each version separately, we devise a viable and more efficient technique. We cloned the latest release containing the \textit{\.git} folder in it. Then we write a script to checkout each tag based on the tags that git itself gives us by running \textit{git tag}. For each tag that we checkout in this process we search 
+After selecting projects we had to find an automatic way to have all versions checked out, and ready for analysis. Instead of downloading each version separately, we devise a viable and more efficient technique. We cloned the latest release containing the \textit{\.git} folder in it. Then we write a script to checkout each tag based on the tags that git itself gives us by running \textit{`git log --tags --date-order --reverse --simplify-by-decoration --pretty=\%ai \%d'}. This command will return to us all the tags available in the repository ordered by date. Keeping the chronological order of the tags is important as our analysis in SonarQube has to be done in chronological order as well. 
+
+The next process in our script check all the directories of the created tag searching for third-party libraries folders and remove them. We created a regular expression for this mean. 
+
+The last process run when creating the tag is the addition of the sonar properties file. This file contains information about the created tag and is mandatory to run SonarQube analysis.
+
 
 \subsection{Run SonarQube analysis}
 
 \par
-Each version of each application has been analyzed with a powerful source code analyzer tool named SonarQube to extract metrics relevant to evolution of software. We also used this tool to catch anti-patterns developers do in JavaScript and the results is based on the categorization of their severity.
+Each version of each application has been analyzed with a powerful source code analyzer tool named SonarQube. The resulting analysis of this tool contain metrics that are relevant to study evolution of software. 
+\par
+We also used this tool to identify anti-patterns that developers do in JavaScript. The results of this analysis is categorized in order of their severity. The possible classifications are `blocker', `critical', `major', `minor' and `info'.
+\par
+The default analysis process of SonarQube considers the current date as the date of the processed tag. This behavior does not allow us to observe the evolution between the different versions over time, as we analyze all the tags in the same day. To fix this problem, we set the right date in a property file that is loaded for each analysis. This file is generated automatically  
+
+
 To have all these data get analyzed in SonarQube we had to deal with few unexpected behavior. For example SonarQube does not consider release dates as the real of release date. It just take out the date of the analysis that it was executed to analyze the source. In this scenario we have 1065 releases with the release date of the day we extract from the tag date. By fixing SonarQube we were able to extract desired metrics on an order of correct release date.
 
 \subsection{Extract data from SonarQube}
