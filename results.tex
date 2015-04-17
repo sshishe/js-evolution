@@ -1,11 +1,18 @@
-Our goal is to understand how JavaScripts projects evolves. More specifically we want to analyze first, the growth of JavaScript projects. Second, the time to release new versions and how frequently the functions in JavaScript changes. Third, how actively developers from the open source community collaborates to the projects and what is the average time to fix a bug in these projects. Forth, How common it is to have bad practices and anti-patterns in JavaScript projects. In order to do that we use the collected data from 15 open source projects as described in our approach to answer our research questions. 
+Our goal is to understand how JavaScripts projects evolves. More specifically we want to analyze first, the growth of JavaScript projects. Second, the time to release new versions and how frequently the functions in JavaScript changes. Third, how actively developers from the open source community collaborates to the projects and what is the average time to fix a bug in these projects. Fourth, How common is it to have bad practices and anti-patterns in JavaScript projects. In order to do that we use the collected data from 15 open source projects as described in our approach to answer our research questions. 
 
 \vspace{5 mm}
 \noindent{\rqi}
 \vspace{5 mm}
 
-Table \ref{tab:evolution_overview} shows the difference each project has in terms of metrics in comparison of first and last release.
-As we can observe Brackets' first release contains 6271 lines of code but it ends up with 266801 lines of code in the last release. Bracket's last release is the most biggest evolved project with in four years of its existence. It started with 14 directories while in the last release it contains 179 directories. Brackets has 60 releases during its lifetime with 15871 commits. On the other hand NPM with 298 releases is the project with most releases in our dataset. It starts with 1979 lines of code where the last release exceeds to 19837 lines of code with 2231 functions added since the first release. 
+\noindent{\textbf{Motivation:}} Growth is an important aspect of evolution. Even more to open source projects. Growth can mean that the project is in use, that it is changing over time and that it may be adapting to the needs of users. However, it is important to understand how this growing is happening. If a project grows without any planning or if it is becoming too complex that users and developers abandon it. In this case growth is a bad sign. Therefore we conduct our study to understand if the projects are growing in a maintainable manner and if the developers are building the software to the future.   
+
+\vspace{2 mm}
+\noindent{\textbf{Approach:}} First we measure the lines of code, number of commented lines, the number of directories, the number of functions, statements and complexity for each release of each one of our projects. With the results we plot a graph to analyze the growth distribution of our select metrics and draw conclusions. 
+
+\vspace{2 mm}
+\noindent{\textbf{Results:}} Table \ref{tab:evolution_overview} shows the difference each project has in terms of metrics in comparison of first and last release.
+As we can observe Brackets' first release contains 6271 lines of code but it ends up with 266801 lines of code in the last release. Bracket's last release is the most biggest evolved project with in four years of its existence. It started with 14 directories while in the last release it contains 179 directories. Brackets has 60 releases during its lifetime with 15871 commits. On the other hand NPM with 298 releases is the project with most releases in our dataset. It starts with 1979 lines of code where the last release exceeds to 19837 lines of code with 2231 functions added since the first release.
+\todo{create plot to put here}
 
 \begin{table*}[!hbt]
 	\begin{center}
@@ -51,6 +58,14 @@ As we can observe Brackets' first release contains 6271 lines of code but it end
 \vspace{5 mm}
 \noindent{\rqii}
 \vspace{5 mm}
+
+\noindent{\textbf{Motivation:}}
+
+\vspace{2 mm}
+\noindent{\textbf{Approach:}}
+
+\vspace{2 mm}
+\noindent{\textbf{Results:}} 
 
 To better understand the detail of evolution we depict the growth of LOC, directories, functions, statements and complexity. Figure \ref{fig:release_density} exhibit an evolution of our projects.  
 \par
