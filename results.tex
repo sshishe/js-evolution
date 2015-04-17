@@ -1,3 +1,11 @@
+Our goal is to understand how JavaScripts projects evolves. More specifically we want to analyze first, the growth of JavaScript projects. Second, the time to release new versions and how frequently the functions in JavaScript changes. Third, how actively developers from the open source community collaborates to the projects and what is the average time to fix a bug in these projects. Forth, How common it is to have bad practices and anti-patterns in JavaScript projects. In order to do that we use the collected data from 15 open source projects as described in our approach to answer our research questions. 
+
+\vspace{5 mm}
+\noindent{\rqi}
+\vspace{5 mm}
+
+Table \ref{tab:evolution_overview} shows the difference each project has in terms of metrics in comparison of first and last release.
+As we can observe Brackets' first release contains 6271 lines of code but it ends up with 266801 lines of code in the last release. Bracket's last release is the most biggest evolved project with in four years of its existence. It started with 14 directories while in the last release it contains 179 directories. Brackets has 60 releases during its lifetime with 15871 commits. On the other hand NPM with 298 releases is the project with most releases in our dataset. It starts with 1979 lines of code where the last release exceeds to 19837 lines of code with 2231 functions added since the first release. 
 
 \begin{table*}[!hbt]
 	\begin{center}
@@ -40,11 +48,9 @@
 	\end{center}
 \end{table*}
 
-\par
-We use different metrics listed in Table \ref{tab:metrics_definition} metrics. Table \ref{tab:evolution_overview} shows the difference each project has in terms of metrics in comparison of first and last release.
-As we can observe Brackets' first release contains 6271 lines of code but it ends up with 266801 lines of code in the last release. Bracket's last release is the most biggest evolved project with in four years of its existence. It started with 14 directories while in the last release it contains 179 directories. Brackets has 60 releases during its lifetime with 15871 commits. On the other hand NPM with 298 releases is the project with most releases in our dataset. It starts with 1979 lines of code where the last release exceeds to 19837 lines of code with 2231 functions added since the first release. 
-
-\subsection{Release density}
+\vspace{5 mm}
+\noindent{\rqii}
+\vspace{5 mm}
 
 To better understand the detail of evolution we depict the growth of LOC, directories, functions, statements and complexity. Figure \ref{fig:release_density} exhibit an evolution of our projects.  
 \par
@@ -60,10 +66,6 @@ Mongoose has fluctuated during its lifetime to the point that it has 24 releases
 	\includegraphics[width=90mm,scale=0.5]{figures/release_density}
 \end{figure}
 
-
-
-
-
 % release_density 
  \begin{figure}[thb!]
  	\caption{Function density evolution}
@@ -72,7 +74,6 @@ Mongoose has fluctuated during its lifetime to the point that it has 24 releases
  \end{figure}
 
 
-\subsection{Function density}
 We depict the function density of the five chosen projects that we found more interesting because of which shows different trends. We calculated the function density during time periods of three months.
 Figure \ref{fig:function_density} indicates evolution of our five selected projects. Mongoose starts at 2010 with almost 17\% function density and it has faced a decreasing trend during then. It indicates that after a while developers decided to refactor code to have  excessive use of functions removed. Moreover this project from mid 2012 to 2015 shows interesting phenomena. The function density keeps constant rate, but due to the nature of Mongoose project which is a object modeling library for MongoDB there were no any changes in their APIs after stability. Generally, APIs exposed by function declarations and function expressions in JavaScript. As a result the API keeps unchanged for a long period. 
 
@@ -85,18 +86,17 @@ We calculate function density as following:
 
 \par
 Like Mongoose we have the same trend for Brackets which after a dramatic decline during 2012 to 2013 the function density becomes unchanged for two years. These trends, again revealed the fact that projects become mature and established and they do not need to change their APIs while they are stable. One might argue these project would be stop developing and the behavior is because they are in maintenance phase or they are becoming legacy software. But We have numerous release followed which we cannot say these projects are abandoned.  
- 
 
+\vspace{5 mm}
+\noindent{\rqiii}
+\vspace{5 mm}
 
 \par For number of developers we tried to gather data based on email of authors that commit code, however we found out that authors can have multiple emails register to one login id. To overcome this problem we tried to count the number of developers based on the Github usernames. 
-
 
 \par
 Having comments as one of the artifacts that can be a sign of improvement in the readability of source code we examined it as metric of evolution.
 Brackets has the most comment lines with having 63923 comment lines followed by Ember.js with 14698 comment lines. The less documented project is CoffeeScript with having only 124 lines of documentation. What makes the result interesting, is the fact that CoffeeScript starts with 836 lines of comments in the first release but in the last release we have only 124 lines of code. CoffeeScript and Grunt are the only projects that adapt this pattern, while all the other projects show growing trend in number of comments during evolution.  
 
-
-\subsection{Number of developers in each release}
 The next characteristics we measure in evolution is to measure how much a project is community driven. We count number of developers having at least one commit in each period between releases. Figure \ref{fig:number_of_developers} show the number of developers in different time slots. Request and Bootstrap are among projects with over 80 and 100 developers in specific peaks. Despite the fact that Underscore has fluctuated so much, at recent releases it shows that it gains some more attention and it becomes more community driven in terms of number of volunteer contributors. Project \textit{q} takes less attention as compare to other projects. It has never had more than 20 developers since its beginning in mid 2010.
 \par
 Request project had one drastic fell down in mid 2013. By exploring in more details, we found that they have two releases which are closed to each other. The first one has more than 80 developers while the other has less 10 developers. This indicates they found some major issues in former release and few core developers instantly fix them and another release followed by previous one. One interesting phenomena that we observe is the number of released skewed to the right of each graph. Best practices in software engineering suggest having iterative and incremental development and we found out developers tend to have more smaller release in time rather than having one huge release every 6 months.  
@@ -108,8 +108,6 @@ Request project had one drastic fell down in mid 2013. By exploring in more deta
 	\includegraphics[width=90mm,scale=0.5]{figures/number_of_developers_2}
 		\includegraphics[width=90mm,scale=0.5]{figures/number_of_developers_3}
 \end{figure}
-
-\subsection{Issues per release}
 
 
 \ref{fig:number_of_issues}
@@ -168,6 +166,10 @@ What interesting fact we found is that Bootstrap has the least number of days ta
 \textit{Underscore} has a good response and fixed rate among projects. While we are comparing the rate of bug fixing, we observe that Underscore is also one of the projects that has large number of developers contributing to the project. By having deeper observation into the data, we found out that number of developers are positively correlated to the time it takes to fix and close a bug.
 
 \par For project \textit{q} it takes on average 30 days to fix bugs. By looking at number of developers we found out it has comparably less developers as compare to other projects but we have to take into account the fact of projects size and scale are in different order. A project that has fewer functionality might has fewer bugs and as a consequence less time would it take to fix a bug.
+
+\vspace{5 mm}
+\noindent{\rqiv}
+\vspace{5 mm}
 
 \subsection{JavaScript Rule violations}
 We use SonarQube to use its various rules for finding code smells in JavaScript projects. Utilizing SonarQube give us the ability to extract code smells with different severity. To explain it more we list following rules as an example for issues with different severity:

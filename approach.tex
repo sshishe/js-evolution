@@ -1,36 +1,11 @@
 
-\begin{figure*}[th]
+\begin{figure*}[!hbt]
     \caption{Approach overview}
     \centering
     \label{fig:approach_overview}
     \includegraphics[width=1\textwidth]{figures/approach_overview}
  \end{figure*}
 
-
- \begin{table*}[!hbt]
- 	\begin{center}
- 		\caption{Selected metrics definition}
- 		\label{tab:metrics_definition}
- 		\begin{tabular}{c| l l }
- 			\toprule
- 			\textbf{Metric} & \textbf{Definition} \\ \midrule
- 			Lines of Code & The number of uncommented lines of code    \\
- 			Complexity      & McCabe complexity    \\
- 			Complexity/function & Average complexity by function. \\
- 			Complexity/file & Average complexity by file \\
- 			Comment lines  & Number of lines containing either comment or commented-out code. \\
- 			Comment Lines (\%)   & Density of comment lines = Comment lines / (Lines of code + Comment lines) * 100    \\
- 			Duplicated lines (\%)     & Density of duplication = Duplicated lines / Lines * 100    \\
- 			Duplicated blocks   & Number of duplicated blocks of lines    \\
- 			Directories   & Number of directories    \\
- 			Functions            & Number of functions    \\
- 			Statements      & Number of functions   \\
- 			Issues    & Number of issues with severity of blocker, critical, major and minor   \\
- 			Technical debt    & Number of days it takes to fix issues with respect to their severity    \\
- 			Technical debt ratio   & Division of SQALE Index by the estimation effort to re-develop your application from scratch.    \\
- 		\end{tabular}
- 	\end{center}
- \end{table*}
 
 In this section we explain in details each one of the steps that we executed in our study. As shown in Fig \ref{fig:approach_overview} we first prepared all tags to run the source code analysis. Second we process all the tags in SonarQube. Third we extract the analyzed data from SonarQube and store it in our database. Fourth, we mine GitHub repositories to retrieve commit information and issues. Finally we process the data and run our analysis to answer the research questions.  \todo{create new approach figure}
  
@@ -50,22 +25,63 @@ Each version of each application has been analyzed with a powerful source code a
 \par
 We also used this tool to identify anti-patterns that developers do in JavaScript. The results of this analysis is categorized in order of their severity. The possible classifications are `blocker', `critical', `major', `minor' and `info'.
 \par
-The default analysis process of SonarQube considers the current date as the date of the processed tag. This behavior does not allow us to observe the evolution between the different versions over time, as we analyze all the tags in the same day. To fix this problem, we set the right date in a property file that is loaded for each analysis. This file is generated automatically  
+The default analysis process of SonarQube considers the current date as the date of the processed tag. This behavior does not allow us to observe the evolution between the different versions over time, as we run all analysis at once. To fix this problem, we set the desired date in a property file that is loaded in the beginning of each analysis. This file is generated automatically when we create the tags. 
 
-
-To have all these data get analyzed in SonarQube we had to deal with few unexpected behavior. For example SonarQube does not consider release dates as the real of release date. It just take out the date of the analysis that it was executed to analyze the source. In this scenario we have 1065 releases with the release date of the day we extract from the tag date. By fixing SonarQube we were able to extract desired metrics on an order of correct release date.
+In order to process 1065 tags, and to enforce that the chronological order will be maintained even in case of error we created a script to automate this process.
+The script verifies if the tag was processing correctly or with error. Based on the result it decides if is necessary process again or to advance to the next tag. The total time to  process all tags with using this script was of 19 hours.
 
 \subsection{Extract data from SonarQube}
 
 \par After analyzing every tag in SonarQube we extract our chosen metrics that we found them proper for studying evolution of JavaScript projects. Metrics such as McCabe cyclomatic complexity,  comment line density, duplicated lines and blocks, number of directories and statements and etc. Table  \ref{tab:metrics_definition} defines sets of metrics that we used in our analysis.
 
 \par
-Lehman suggests using the number of “modules” as the best way to measure the size of a large software system \cite{Lehman1997METRICS}. However, we decided to use the number of uncommented lines of code (“uncommented LOC”) like the way Godfrey et al \cite{Godfrey2000ICMS} did the evolution study on Linux Kernel. On the other hand we measure the comment lines and the ratio of comments to lines of codes, and based on that we can infer how much developers tend to put comments within their codes. We have to consider hidden corners that can mislead results, for example descriptive comments are totally different to the lines of codes that got commented because of refactoring or changes which considered as light-weight code smells in the code.
+Lehman suggests using the number of `modules' as the best way to measure the size of a large software system \cite{Lehman1997METRICS}. However, we decided to use the number of uncommented lines of code (`uncommented LOC') like the way Godfrey et al. \cite{Godfrey2000ICMS} did the evolution study on Linux Kernel. On the other hand we measure the comment lines and the ratio of comments to lines of codes, and based on that we can infer how much developers tend to put comments within their codes. We have to consider hidden corners that can mislead results, for example descriptive comments are totally different to the lines of codes that got commented because of refactoring or changes which considered as light-weight code smells in the code.
 
 \par
 We want to measure various aspects of the growth of these applications by having metrics such as number of files, lines of code, number of functions and statements. We also measure amount of duplications known as clones in terms of lines of codes, blocks and files. We would measure the cyclomatic complexity over time which the metric is calculated as following. Whenever the control flow of a function splits, the complexity counter gets incremented by one. Each function has a minimum complexity of 1. The control flow can split by conditional statements like if/else, switch case and so on. This metric is also known as also known as McCabe metric
-We use the term “source file” to mean any file whose name ends with \textit{“.js”}. It should be noted we removed folders containing external libraries which is usually located at \textit{lib} or \textit{node\_modules}. 
+We use the term `source file' to mean any file whose name ends with \textit{`.js'}.
 
-\subsection{Mine the GitHub source code and issues repositories}
+In order to extract data from SonarQube we create a script to crawl trough Sonar's metrics comparison page and acquires data. The data extracted from the web pages is stored in a CSV file and imported into the database later. We opted to use a crawler script instead of accessing SonarQube database directly because there is not a clear documentation of how SonarQube database schema is defined and, due to the high number of tags and projects that we are processing create queries for each one of them would be unfeasible. 
+
+ \begin{table*}[!hbt]
+    \begin{center}
+        \caption{Selected metrics definition}
+        \label{tab:metrics_definition}
+        \begin{tabular}{c| l l }
+            \toprule
+            \textbf{Metric} & \textbf{Definition} \\ \midrule
+            Lines of Code & The number of uncommented lines of code    \\
+            Complexity      & McCabe complexity    \\
+            Complexity/function & Average complexity by function. \\
+            Complexity/file & Average complexity by file \\
+            Comment lines  & Number of lines containing either comment or commented-out code. \\
+            Comment Lines (\%)   & Density of comment lines = Comment lines / (Lines of code + Comment lines) * 100    \\
+            Duplicated lines (\%)     & Density of duplication = Duplicated lines / Lines * 100    \\
+            Duplicated blocks   & Number of duplicated blocks of lines    \\
+            Directories   & Number of directories    \\
+            Functions         & Number of functions    \\
+            Statements        & Number of statements   \\
+            Code Issues       & Number of issues with severity of blocker, critical, major and minor   \\
+            Technical debt    & Number of days it takes to fix issues with respect to their severity    \\
+            Technical debt ratio   & Division of SQALE Index by the estimation effort to re-develop your application from scratch.    \\
+        \end{tabular}
+    \end{center}
+ \end{table*}
+
+\subsection{Mine the source and issue tracker repositories}
+
+There are at least two possible ways to extract commits information. One is by cloning the repository and then running git commands to extract the commits, and the other is using the API. We opted to extract the commits from the source code using the API. This API provides access to all public available data in any repository hosted at GitHub. Another important reason is that in our understanding is easier to create an automated process to extract this data using the API. 
+
+We create a script that extract all commits from a given the repository name. This script store the requested information in a Json file.Then we create a parser that read this file and extract all the desired date into our database.
+
+To extract the information of the issue tracker repository we apply the same approach. We created one script to request the information using the API and a second one script to parse the file and store it in the database.
 
 \subsection{Process the data}
+
+After importing the metrics from SonarQube and mining the source and issue tracker repositories we need to process and transform this data to use it in our analysis. 
+
+First, we make all the necessary transformations in the data extracted using the crawler script. As we get the data in the state that it appears to the web site user we need to convert and format dates to its specific type in the database. Then we need to do the same thing for numbers, some of them were acquired as percentages and others was separated by comas. We run several SQL scripts to complete this transformation.
+
+Second, we link the extracted commits with each one of the tags using the commit date and the tag date. If the commit date is after the tag release date and before the next tag release date then the commit belongs to that tag.
+
+Third, we link the extracted issues with each one of the tags using the reported date and the tag date. If the reported date is after the tag release date and before the next tag release date then the issue belongs to that tag.
