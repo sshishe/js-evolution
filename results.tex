@@ -12,7 +12,6 @@ Our goal is to understand how JavaScripts projects evolves. First we want to ana
 \vspace{1 mm}
 \noindent{\textbf{Results:}} Table \ref{tab:evolution_overview} shows the difference each project has in terms of metrics in comparison of first and last release.
 As we can observe Brackets' first release contains 6271 lines of code but it ends up with 266801 lines of code in the last release. Bracket's last release is the most biggest evolved project with in four years of its existence. It started with 14 directories while in the last release it contains 179 directories. Brackets has 60 releases during its lifetime with 15871 commits. On the other hand NPM with 298 releases is the project with most releases in our dataset. It starts with 1979 lines of code where the last release exceeds to 19837 lines of code with 2231 functions added since the first release.
-\todo{create plot to put here}
 
 \begin{table*}[!hbt]
 	\begin{center}
@@ -110,6 +109,14 @@ Like Mongoose we have the same trend for Brackets which after a dramatic decline
 % \begin{center}
 % 	$Release Density= \frac{\sum Releases}{3 Months}$
 % \end{center}
+
+% \begin{figure}[thb!]
+% 	\caption{Lines of code evolution}
+% 	\label{fig:lines_of_code}
+% 	\includegraphics[width=90mm,scale=0.5]{figures/bower_loc}
+% 	\includegraphics[width=90mm,scale=0.5]{figures/npm_loc}
+% 	\includegraphics[width=90mm,scale=0.5]{figures/mongoose_loc}
+% \end{figure}
 
 % release density 
 \begin{figure}[thb!]
@@ -210,11 +217,10 @@ What interesting fact we found is that Bootstrap has the least number of days ta
 
 \par For project \textit{q} it takes on average 30 days to fix bugs. By looking at number of developers we found out it has comparably less developers as compare to other projects but we have to take into account the fact of projects size and scale are in different order. A project that has fewer functionality might has fewer bugs and as a consequence less time would it take to fix a bug.
 
-\vspace{5 mm}
+\vspace{3 mm}
 \noindent{\rqiv}
-\vspace{5 mm}
+\vspace{3 mm}
 
-\subsection{JavaScript Rule violations}
 We use SonarQube to use its various rules for finding code smells in JavaScript projects. Utilizing SonarQube give us the ability to extract code smells with different severity. To explain it more we list following rules as an example for issues with different severity:
 
 	\begin{table*}[!hbt]
