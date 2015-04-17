@@ -1,15 +1,15 @@
-Our goal is to understand how JavaScripts projects evolves. More specifically we want to analyze first, the growth of JavaScript projects. Second, the time to release new versions and how frequently the functions in JavaScript changes. Third, how actively developers from the open source community collaborates to the projects and what is the average time to fix a bug in these projects. Fourth, How common is it to have bad practices and anti-patterns in JavaScript projects. In order to do that we use the collected data from 15 open source projects as described in our approach to answer our research questions. 
+Our goal is to understand how JavaScripts projects evolves. First we want to analyze the growth of JavaScript projects. Second, the time to release new versions and how frequently the functions in JavaScript changes. Third, how actively developers from the open source community collaborates to the projects and what is the average time to fix a bug in these projects. Fourth, How common is it to have bad practices and anti-patterns in JavaScript projects. In order to do that we use the collected data from 15 open source projects as described in our approach to answer our research questions. 
 
-\vspace{5 mm}
+\vspace{3 mm}
 \noindent{\rqi}
-\vspace{5 mm}
+\vspace{3 mm}
 
 \noindent{\textbf{Motivation:}} Growth is an important aspect of evolution. Even more to open source projects. Growth can mean that the project is in use, that it is changing over time and that it may be adapting to the needs of users. However, it is important to understand how this growing is happening. If a project grows without any planning or if it is becoming too complex that users and developers abandon it. In this case growth is a bad sign. Therefore we conduct our study to understand if the projects are growing in a maintainable manner and if the developers are building the software to the future.   
 
-\vspace{2 mm}
+\vspace{1 mm}
 \noindent{\textbf{Approach:}} First we measure the lines of code, number of commented lines, the number of directories, the number of functions, statements and complexity for each release of each one of our projects. With the results we plot a graph to analyze the growth distribution of our select metrics and draw conclusions. 
 
-\vspace{2 mm}
+\vspace{1 mm}
 \noindent{\textbf{Results:}} Table \ref{tab:evolution_overview} shows the difference each project has in terms of metrics in comparison of first and last release.
 As we can observe Brackets' first release contains 6271 lines of code but it ends up with 266801 lines of code in the last release. Bracket's last release is the most biggest evolved project with in four years of its existence. It started with 14 directories while in the last release it contains 179 directories. Brackets has 60 releases during its lifetime with 15871 commits. On the other hand NPM with 298 releases is the project with most releases in our dataset. It starts with 1979 lines of code where the last release exceeds to 19837 lines of code with 2231 functions added since the first release.
 \todo{create plot to put here}
@@ -55,56 +55,83 @@ As we can observe Brackets' first release contains 6271 lines of code but it end
 	\end{center}
 \end{table*}
 
-\vspace{5 mm}
+\vspace{3 mm}
 \noindent{\rqii}
-\vspace{5 mm}
+\vspace{3 mm}
 
-\noindent{\textbf{Motivation:}}
+\noindent{\textbf{Motivation:}} It is common to use entire JavaScript libraries inside JavaScript projects, and changes in these libraries can impact your project. Therefore, it is important to understand how often new releases are shipped so you can plan ahead how to use or upgrade these libraries. In the same way, understanding how often third party APIs changes can shape the way you utilize them in your project. 
 
-\vspace{2 mm}
-\noindent{\textbf{Approach:}}
-
-\vspace{2 mm}
-\noindent{\textbf{Results:}} 
-
-To better understand the detail of evolution we depict the growth of LOC, directories, functions, statements and complexity. Figure \ref{fig:release_density} exhibit an evolution of our projects.  
-\par
-Mongoose has fluctuated during its lifetime to the point that it has 24 releases at 2012 while it shows relatively 4 releases in 2014. We can infer that at beginning of its development due to the nature of changes and developer usage they release many versions.For Mongoose, when it became more stable it has less releases per each three month. Bootstrap is one of the libraries that had steady increase and decrease in its evolution, yet it has less release rate in compare to Mongoose. We use following formula to calculate release density in period of three months:
-\begin{center}
-	$Release Density= \frac{\sum Releases}{3 Months}$
-\end{center}
-
-% release_density 
-\begin{figure}[thb!]
-	\caption{Release density evolution}
-	\label{fig:release_density}
-	\includegraphics[width=90mm,scale=0.5]{figures/release_density}
-\end{figure}
-
-% release_density 
- \begin{figure}[thb!]
- 	\caption{Function density evolution}
- 	\label{fig:function_density}
- 	\includegraphics[width=90mm,scale=0.5]{figures/function_density}
- \end{figure}
-
-
-We depict the function density of the five chosen projects that we found more interesting because of which shows different trends. We calculated the function density during time periods of three months.
-Figure \ref{fig:function_density} indicates evolution of our five selected projects. Mongoose starts at 2010 with almost 17\% function density and it has faced a decreasing trend during then. It indicates that after a while developers decided to refactor code to have  excessive use of functions removed. Moreover this project from mid 2012 to 2015 shows interesting phenomena. The function density keeps constant rate, but due to the nature of Mongoose project which is a object modeling library for MongoDB there were no any changes in their APIs after stability. Generally, APIs exposed by function declarations and function expressions in JavaScript. As a result the API keeps unchanged for a long period. 
-
-\par
-We calculate function density as following:
+\vspace{1 mm}
+\noindent{\textbf{Approach:}} First, we calculate the average number of releases. We count the number of all versions released and divide it by the number of months between the first release and the last release of each project. Second, we analyze the distribution of the releases. We group the releases in intervals of three months each, and we plot the results to interpret the graph. Third, we use function density to explain the state of public API over time. We calculate the function density in intervals of three months for each project. Then we plot the results for analysis. The formula to calculate function density is the following:
 
 \begin{center}
 	$Function Density=  \frac{\left ( \frac{Number Of Functions}{Lines Of Code} \right)}{Number Of Releases}\ast 100$
 \end{center}
 
+\vspace{1 mm}
+\noindent{\textbf{Results:}} We present the average of number of releases in table \ref{tab:average_release} in general JavaScript projects has a fast passed development with a high number of releases. Npm is the project with the highest average of releases per month 5.13, and the lowest average belongs to Grunt 0.41. 
+
+We present how the releases are distribute in figure \ref{fig:release_density}. Based on the results we find that Mongoose has a higher concentration of releases in the beginning of its development (2012) reaching the peak of 24 releases in three months. Later in its life-cycle (2014) the number of releases drops to 4 and currently (2015) the number of releases increased to 10. We can infer that in the beginning of development more releases are necessary due to the number of changes and the immaturity of the project. Bootstrap in the other hand shows lower variation in the number of releases over time. In general is not possible to say that the distribution of the releases are evenly distributed over time. 
+
+\todo{review}
+We depict the function density of the five chosen projects that we found more interesting because of which shows different trends. We calculated the function density during time periods of three months.
+Figure \ref{fig:function_density} indicates evolution of our five selected projects. Mongoose starts at 2010 with almost 17\% function density and it has faced a decreasing trend during then. It indicates that after a while developers decided to refactor code to have  excessive use of functions removed. Moreover this project from mid 2012 to 2015 shows interesting phenomena. The function density keeps constant rate, but due to the nature of Mongoose project which is a object modeling library for MongoDB there were no any changes in their APIs after stability. Generally, APIs exposed by function declarations and function expressions in JavaScript. As a result the API keeps unchanged for a long period. 
+
 \par
 Like Mongoose we have the same trend for Brackets which after a dramatic decline during 2012 to 2013 the function density becomes unchanged for two years. These trends, again revealed the fact that projects become mature and established and they do not need to change their APIs while they are stable. One might argue these project would be stop developing and the behavior is because they are in maintenance phase or they are becoming legacy software. But We have numerous release followed which we cannot say these projects are abandoned.  
 
-\vspace{5 mm}
+\begin{table}[!hbt]
+    \begin{center}
+        \caption{Average releases per month}
+        \label{tab:average_release}
+        \begin{tabular}{l| c c c}
+           \toprule
+           \textbf{Project} & \textbf{Age in months} & \textbf{\# of releases} & \textbf{Average}\\ \midrule
+           Npm          &    58 &  298 &   5.13 \\ 
+           Mongoose     &    58 &  197 &   3.39 \\
+           Bower        &    30 &   65 &   2.16 \\
+           Mocha        &    39 &   80 &   2.05 \\
+           Ember.js     &    44 &   87 &   1.97 \\
+           Brackets     &    37 &   60 &   1.62 \\
+           Q            &    50 &   48 &   0.96 \\
+           Source-map   &    41 &   29 &   0.70 \\
+           Node-mysql   &    55 &   38 &   0.69 \\
+           Bootstrap    &    40 &   27 &   0.67 \\
+           Less.js      &    57 &   38 &  0.66 \\
+           Request      &    49 &   32 &  0.65 \\
+           Coffeescript &    57 &   31 &  0.54 \\
+           Underscore   &    56 &   30 &  0.53 \\
+           Grunt        &    12 &    5 &  0.41 \\ \bottomrule
+      \end{tabular}
+    \end{center}
+\end{table}
+
+% commented formula
+% \begin{center}
+% 	$Release Density= \frac{\sum Releases}{3 Months}$
+% \end{center}
+
+% release density 
+\begin{figure}[thb!]
+	\caption{Release density evolution}
+	\label{fig:release_density}
+	\includegraphics[width=90mm,scale=0.5]{figures/release_density}
+	\includegraphics[width=90mm,scale=0.5]{figures/release_density_2}
+	\includegraphics[width=90mm,scale=0.5]{figures/release_density_3}
+\end{figure}
+
+% Function density 
+ \begin{figure}[thb!]
+ 	\caption{Function density evolution}
+ 	\label{fig:function_density}
+ 	\includegraphics[width=90mm,scale=0.5]{figures/function_density}
+ 	\includegraphics[width=90mm,scale=0.5]{figures/function_density_2}
+ 	\includegraphics[width=90mm,scale=0.5]{figures/function_density_3}
+ \end{figure}
+
+\vspace{3 mm}
 \noindent{\rqiii}
-\vspace{5 mm}
+\vspace{3 mm}
 
 \par For number of developers we tried to gather data based on email of authors that commit code, however we found out that authors can have multiple emails register to one login id. To overcome this problem we tried to count the number of developers based on the Github usernames. 
 
@@ -115,13 +142,14 @@ Brackets has the most comment lines with having 63923 comment lines followed by 
 The next characteristics we measure in evolution is to measure how much a project is community driven. We count number of developers having at least one commit in each period between releases. Figure \ref{fig:number_of_developers} show the number of developers in different time slots. Request and Bootstrap are among projects with over 80 and 100 developers in specific peaks. Despite the fact that Underscore has fluctuated so much, at recent releases it shows that it gains some more attention and it becomes more community driven in terms of number of volunteer contributors. Project \textit{q} takes less attention as compare to other projects. It has never had more than 20 developers since its beginning in mid 2010.
 \par
 Request project had one drastic fell down in mid 2013. By exploring in more details, we found that they have two releases which are closed to each other. The first one has more than 80 developers while the other has less 10 developers. This indicates they found some major issues in former release and few core developers instantly fix them and another release followed by previous one. One interesting phenomena that we observe is the number of released skewed to the right of each graph. Best practices in software engineering suggest having iterative and incremental development and we found out developers tend to have more smaller release in time rather than having one huge release every 6 months.  
-% release_density 
+
+% developers per release 
 \begin{figure}[thb!]
 	\caption{Number of developers per release}
 	\label{fig:number_of_developers}
 	\includegraphics[width=90mm,scale=0.5]{figures/number_of_developers}
 	\includegraphics[width=90mm,scale=0.5]{figures/number_of_developers_2}
-		\includegraphics[width=90mm,scale=0.5]{figures/number_of_developers_3}
+	\includegraphics[width=90mm,scale=0.5]{figures/number_of_developers_3}
 \end{figure}
 
 
