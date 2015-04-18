@@ -1,17 +1,26 @@
-Our goal is to understand how JavaScripts projects evolves. First we want to analyze the growth of JavaScript projects. Second, the time to release new versions and how frequently the functions in JavaScript changes. Third, how actively developers from the open source community collaborates to the projects and what is the average time to fix a bug in these projects. Fourth, How common is it to have bad practices and anti-patterns in JavaScript projects. In order to do that we use the collected data from 15 open source projects as described in our approach to answer our research questions. 
+
+Our goal is to understand how JavaScripts projects evolve. First we want to analyze the growth of JavaScript projects. Second, the time to release new versions and how frequently the functions in JavaScript changes. Third, how actively developers from the open source community collaborates to the projects and what is the average time to fix a bug in these projects. Fourth, How common it is to have bad practices and anti-patterns in JavaScript projects. In order to do that we use the collected data from 15 open source projects as described in section \ref{sec:approach} to answer our research questions. 
 
 \vspace{3 mm}
 \noindent{\rqi}
 \vspace{3 mm}
 
-\noindent{\textbf{Motivation:}} Growth is an important aspect of evolution. Even more to open source projects. Growth can mean that the project is in use, that it is changing over time and that it may be adapting to the needs of users. However, it is important to understand how this growing is happening. If a project grows without any planning or if it is becoming too complex that users and developers abandon it. In this case growth is a bad sign. Therefore we conduct our study to understand if the projects are growing in a maintainable manner and if the developers are building the software to the future.   
+\noindent{\textbf{Motivation:}} Growth is an important aspect of evolution, either for open source projects or commercial softwares. Growth can mean that the project is in use, that it is changing over time and it may be adapting to the needs of users. However, it is important to understand how this growing is happening. If a project grows without any planning or if it is becoming too complex that maintaining such a software is hard and burdensome. In this case growth is a bad sign. Therefore we conduct our study to understand if the projects are growing in a maintainable manner and if the developers are building the software to the future.   
 
 \vspace{1 mm}
-\noindent{\textbf{Approach:}} First we measure the lines of code, number of commented lines, the number of directories, the number of functions, statements and complexity for each release of each one of our projects. With the results we plot a graph to analyze the growth distribution of our select metrics and draw conclusions. 
+\noindent{\textbf{Approach:}} First we measure lines of code, number of commented lines, number of directories, number of functions, statements and complexity for each release of selected projects. With the results we plot a graph to analyze the growth distribution of metrics to be able to draw conclusions. 
 
 \vspace{1 mm}
 \noindent{\textbf{Results:}} Table \ref{tab:evolution_overview} shows the difference each project has in terms of metrics in comparison of first and last release.
-As we can observe Brackets' first release contains 6271 lines of code but it ends up with 266801 lines of code in the last release. Bracket's last release is the most biggest evolved project with in four years of its existence. It started with 14 directories while in the last release it contains 179 directories. Brackets has 60 releases during its lifetime with 15871 commits. On the other hand NPM with 298 releases is the project with most releases in our dataset. It starts with 1979 lines of code where the last release exceeds to 19837 lines of code with 2231 functions added since the first release.
+As we can observe Brackets' first release contains 6271 lines of code in the first release but it ends up with 266801 lines of code in the last release. Bracket's last release is the most biggest evolved project with in four years of its existence. It started with 14 directories while in the last release it contains 179 directories. It has 60 releases during its lifetime with 15871 commits. On the other hand NPM with 298 releases is the project with most releases in our dataset. It starts with 1979 lines of code where the last release exceeds to 19837 lines of code with 2231 functions added since the first release.
+
+
+\par
+Having comments as one of the artifacts that can be a sign of improvement in the readability of source code we examined it as metric of evolution.
+Brackets has the most comment lines with having 63923 comment lines followed by Ember.js with 14698 comment lines. The less documented project is CoffeeScript with having only 124 lines of documentation. What makes the result interesting, is the fact that CoffeeScript starts with 836 lines of comments in the first release but in the last release we have only 124 lines of code. CoffeeScript and Grunt are the only projects that adapt this pattern, while all the other projects show growing trend in number of comments during evolution.  
+
+
+Figure \ref{fig:lines_of_code} shows the evolution of each project in terms of lines of code. 
 
 \begin{table*}[!hbt]
 	\begin{center}
@@ -58,26 +67,44 @@ As we can observe Brackets' first release contains 6271 lines of code but it end
 \noindent{\rqii}
 \vspace{3 mm}
 
-\noindent{\textbf{Motivation:}} It is common to use entire JavaScript libraries inside JavaScript projects, and changes in these libraries can impact your project. Therefore, it is important to understand how often new releases are shipped so you can plan ahead how to use or upgrade these libraries. In the same way, understanding how often third party APIs changes can shape the way you utilize them in your project. 
+\noindent{\textbf{Motivation:}} It is common to use entire JavaScript libraries inside JavaScript projects, and changes in these libraries can impact the project. Therefore, it is important to understand how often new releases are shipped so developer can plan ahead how to use or upgrade these libraries. In the same way, understanding how often third party APIs changes can be an indication of stability of a library. Library with more changes in the API is less reliable than the project has constant and backward compatible API.
 
 \vspace{1 mm}
-\noindent{\textbf{Approach:}} First, we calculate the average number of releases. We count the number of all versions released and divide it by the number of months between the first release and the last release of each project. Second, we analyze the distribution of the releases. We group the releases in intervals of three months each, and we plot the results to interpret the graph. Third, we use function density to explain the state of public API over time. We calculate the function density in intervals of three months for each project. Then we plot the results for analysis. The formula to calculate function density is the following:
+\noindent{\textbf{Approach:}} First, we calculate the average number of releases. We count the number of versions released and divide it by the number of months between the first release and the last release of each project. Second, we analyze the distribution of the releases. We group the releases in intervals of three months each, and we plot the results to interpret the graph. We chose threshold of three months because it can fit for projects for less history. Although majority of selected projects are long lived, the possibility of having more project still exist. Third, we use function density to explain the state of public API over time. We calculate the function density in intervals of three months (as the defined threshold) for each project. Then we plot the results for analysis. The formula to calculate function density is the following:
 
 \begin{center}
 	$Function Density=  \frac{\left ( \frac{Number Of Functions}{Lines Of Code} \right)}{Number Of Releases}\ast 100$
 \end{center}
 
 \vspace{1 mm}
-\noindent{\textbf{Results:}} We present the average of number of releases in table \ref{tab:average_release} in general JavaScript projects has a fast passed development with a high number of releases. Npm is the project with the highest average of releases per month 5.13, and the lowest average belongs to Grunt 0.41. 
+\noindent{\textbf{Results:}} We present the average of number of releases in table \ref{tab:average_release}. In general JavaScript projects has a fast paced development with a high number of releases. NPM is the project with the highest average of releases per month 5.13, and the lowest average belongs to Grunt 0.41. 
 
-We present how the releases are distribute in figure \ref{fig:release_density}. Based on the results we find that Mongoose has a higher concentration of releases in the beginning of its development (2012) reaching the peak of 24 releases in three months. Later in its life-cycle (2014) the number of releases drops to 4 and currently (2015) the number of releases increased to 10. We can infer that in the beginning of development more releases are necessary due to the number of changes and the immaturity of the project. Bootstrap in the other hand shows lower variation in the number of releases over time. In general is not possible to say that the distribution of the releases are evenly distributed over time. 
+Moreover we present how the releases are distributed in figure \ref{fig:release_density}. Based on the results we found Mongoose has a higher concentration of releases in the beginning of its development (2012) reaching the peak of 24 releases in three months. Later, in (2014) the number of releases drops to 4 and currently (2015) the number of releases increased to 10. We can infer that in the beginning of development more releases are necessary due to the number of changes and the immaturity of the project. Bootstrap on the other hand shows lower variation in the number of releases over time. So it is not possible to say that the distribution of the releases are evenly distributed over time. 
 
-\todo{review}
-We depict the function density of the five chosen projects that we found more interesting because of which shows different trends. We calculated the function density during time periods of three months.
-Figure \ref{fig:function_density} indicates evolution of our five selected projects. Mongoose starts at 2010 with almost 17\% function density and it has faced a decreasing trend during then. It indicates that after a while developers decided to refactor code to have  excessive use of functions removed. Moreover this project from mid 2012 to 2015 shows interesting phenomena. The function density keeps constant rate, but due to the nature of Mongoose project which is a object modeling library for MongoDB there were no any changes in their APIs after stability. Generally, APIs exposed by function declarations and function expressions in JavaScript. As a result the API keeps unchanged for a long period. 
+
+% release density 
+\begin{figure}[thb!]
+	\caption{Release density evolution}
+	\label{fig:release_density}
+	\includegraphics[width=90mm,scale=0.5]{figures/release_density}
+	\includegraphics[width=90mm,scale=0.5]{figures/release_density_2}
+	\includegraphics[width=90mm,scale=0.5]{figures/release_density_3}
+\end{figure}
+
+
+We also measure the function density of projects over time. We calculated the function density during time periods of again, three months.
+Figure \ref{fig:function_density} indicates evolution selected projects. Mongoose starts at 2010 with almost 17\% function density and it has faced a decreasing trend then. It indicates that after a while developers decided to refactor code to have excessive use of functions removed. Moreover this project from mid 2012 to 2015 shows interesting phenomena. The function density keeps constant rate, but due to the nature of Mongoose project which is a object modeling library for MongoDB there were no more changes in their APIs after stability. In most JavaScript projects, APIs exposed by function declarations and function expressions. As a result the API keeps constant rate for a long period. 
+% Function density 
+\begin{figure}[thb!]
+	\caption{Function density evolution}
+	\label{fig:function_density}
+	\includegraphics[width=90mm,scale=0.5]{figures/function_density}
+	\includegraphics[width=90mm,scale=0.5]{figures/function_density_2}
+	\includegraphics[width=90mm,scale=0.5]{figures/function_density_3}
+\end{figure}
 
 \par
-Like Mongoose we have the same trend for Brackets which after a dramatic decline during 2012 to 2013 the function density becomes unchanged for two years. These trends, again revealed the fact that projects become mature and established and they do not need to change their APIs while they are stable. One might argue these project would be stop developing and the behavior is because they are in maintenance phase or they are becoming legacy software. But We have numerous release followed which we cannot say these projects are abandoned.  
+Like Mongoose we have the same trend for Brackets which after a dramatic decline during 2012 to 2013 the function density becomes unchanged for two years. These trends, again revealed the fact that projects become mature and established. They do not need to change their APIs while they are in the stable phase. One might argue these project could stopped in development and the behavior is because they are in maintenance phase or in the worst case are no longer supporting project more than just bug fixes. But We have numerous releases followed which we cannot say these projects are abandoned. More importantly, lines of codes accumulated in next release show moderate churns as compare to immediate previous release.  
 
 \begin{table}[!hbt]
     \begin{center}
@@ -110,45 +137,20 @@ Like Mongoose we have the same trend for Brackets which after a dramatic decline
 % 	$Release Density= \frac{\sum Releases}{3 Months}$
 % \end{center}
 
-\begin{figure}[thb!]
-	\caption{Lines of code evolution}
-	\label{fig:lines_of_code}
-	\includegraphics[width=90mm,scale=0.5]{figures/bower_loc}
-	\includegraphics[width=90mm,scale=0.5]{figures/npm_loc}
-	\includegraphics[width=90mm,scale=0.5]{figures/mongoose_loc}
-\end{figure}
 
-% release density 
-\begin{figure}[thb!]
-	\caption{Release density evolution}
-	\label{fig:release_density}
-	\includegraphics[width=90mm,scale=0.5]{figures/release_density}
-	\includegraphics[width=90mm,scale=0.5]{figures/release_density_2}
-	\includegraphics[width=90mm,scale=0.5]{figures/release_density_3}
-\end{figure}
 
-% Function density 
- \begin{figure}[thb!]
- 	\caption{Function density evolution}
- 	\label{fig:function_density}
- 	\includegraphics[width=90mm,scale=0.5]{figures/function_density}
- 	\includegraphics[width=90mm,scale=0.5]{figures/function_density_2}
- 	\includegraphics[width=90mm,scale=0.5]{figures/function_density_3}
- \end{figure}
 
 \vspace{3 mm}
 \noindent{\rqiii}
 \vspace{3 mm}
 
-\par For number of developers we tried to gather data based on email of authors that commit code, however we found out that authors can have multiple emails register to one login id. To overcome this problem we tried to count the number of developers based on the Github usernames. 
-
 \par
-Having comments as one of the artifacts that can be a sign of improvement in the readability of source code we examined it as metric of evolution.
-Brackets has the most comment lines with having 63923 comment lines followed by Ember.js with 14698 comment lines. The less documented project is CoffeeScript with having only 124 lines of documentation. What makes the result interesting, is the fact that CoffeeScript starts with 836 lines of comments in the first release but in the last release we have only 124 lines of code. CoffeeScript and Grunt are the only projects that adapt this pattern, while all the other projects show growing trend in number of comments during evolution.  
-
-The next characteristics we measure in evolution is to measure how much a project is community driven. We count number of developers having at least one commit in each period between releases. Figure \ref{fig:number_of_developers} show the number of developers in different time slots. Request and Bootstrap are among projects with over 80 and 100 developers in specific peaks. Despite the fact that Underscore has fluctuated so much, at recent releases it shows that it gains some more attention and it becomes more community driven in terms of number of volunteer contributors. Project \textit{q} takes less attention as compare to other projects. It has never had more than 20 developers since its beginning in mid 2010.
+The next characteristics we measure in evolution is to measure how much a project is community driven.
+For number of developers we extract number of contributor involving in developing projects. Extraction of the number of developers were somehow tricky. We tried to gather data based on email of authors that commit code, however we found out that authors can have multiple emails being registered to one login id. To overcome this problem we tried to count the number of developers based on the Github usernames. 
 \par
-Request project had one drastic fell down in mid 2013. By exploring in more details, we found that they have two releases which are closed to each other. The first one has more than 80 developers while the other has less 10 developers. This indicates they found some major issues in former release and few core developers instantly fix them and another release followed by previous one. One interesting phenomena that we observe is the number of released skewed to the right of each graph. Best practices in software engineering suggest having iterative and incremental development and we found out developers tend to have more smaller release in time rather than having one huge release every 6 months.  
+ We count number of developers which has at least one commit in each period between releases. Figure \ref{fig:number_of_developers} show the number of developers in different time slots. Request and Bootstrap are among projects with over 80 and 100 developers in specific peaks. Despite the fact that Underscore has fluctuated so much, at recent releases it shows that it gains more attention and it becomes more community driven in terms of number of volunteer contributors. Project \textit{q} takes less attention as compare to other projects. It has never had more than 20 developers since its beginning in mid 2010.
+\par
+Request project had one drastic fell down in mid 2013. By exploring in more details, we found that they have two releases which are closed to each other. The first one has more than 80 developers while the other has less 10 developers. This indicates they found some major issues in former release. Few core developers instantly fix them and another release followed by previous one in a short term. One interesting phenomena that we observe is the number of released skewed to the right which is time over \text{x} axis. Resorting to best practices in software engineering suggest having iterative and incremental development. We found out developers tend to have more smaller releases in time rather than having one huge release every 6 months.  
 
 % developers per release 
 \begin{figure}[thb!]
@@ -159,9 +161,7 @@ Request project had one drastic fell down in mid 2013. By exploring in more deta
 	\includegraphics[width=90mm,scale=0.5]{figures/number_of_developers_3}
 \end{figure}
 
-
-\ref{fig:number_of_issues}
-Having a software without bug means that software is never used by users. When it comes to bugs, we can find where and in what extent the software's problem are saturated. The module or component with more issues is an indication of complex. Taking a look in each project and density of issues during releases get us an insight into on how quality JavaScript projects are developed. Figure \ref{fig:number_of_issues} shows numbers of issues introduced between releases.
+Having a software without bug means that software is never used by users. When it comes to bugs, we can find where and in what extent the software problems are located. The module or component with more issues is an indication of complex, yet it is the component that is being used more by other parts. Taking a look in each project and density of issues during releases get us an insight into on how quality JavaScript projects are developed. Figure \ref{fig:number_of_issues} shows numbers of issues introduced between releases.
 
 \begin{figure}[thb!]
 	\caption{Number of issues introduced in each release}
@@ -170,8 +170,6 @@ Having a software without bug means that software is never used by users. When i
 	\includegraphics[width=90mm,scale=0.5]{figures/issues_per_release_2}
 	\includegraphics[width=90mm,scale=0.5]{figures/issues_per_release_3}
 \end{figure}
-
- Figure \ref{fig:avg_issue_fix} shows the average time it takes to get project fixed in all JavaScript projects.
  
 \begin{figure}[thb!]
 	\caption{Average time to fix issues}
@@ -181,7 +179,7 @@ Having a software without bug means that software is never used by users. When i
 \end{figure}
 
 
-Figure \ref{fig:number_of_issues} shows Bootstrap in special releases had around 1000 issues caught by testers and developers. Looking back to the nature of this project, it is obvious such a huge library which provides lots of functionalities would probably have numerous users whom they can report bugs. Moreover for the release in the mid of 2013 we can see the distance between the release and previous ones was significant. By looking at the data we found out that release was one of the major releases that Bootstrap had before. 
+Figure \ref{fig:number_of_issues} shows Bootstrap in special releases had around 1000 issues caught by testers and developers. Looking back to the nature of this project, it is obvious such a huge library which provides lots of functionalities would probably have numerous users whom they can report bugs. Moreover for the release in the mid of 2013 we can see the distance between the release and previous ones was significant. By looking at the data we found out that release was one of the major releases that Bootstrap had ever. 
 
 \begin{table}[!hbt]
 	\begin{center}
@@ -209,19 +207,20 @@ Figure \ref{fig:number_of_issues} shows Bootstrap in special releases had around
 	\end{center}
 \end{table}
 
-To study more about these different projects we conduct another analysis to find the average time it takes to fix a bug that reported after releases. We use Github issue tracker to extract all information related to bugs and then we grouped them by releases. Then the average time it takes since the bug was created to the date it has closed is calculated. Table \ref{tab:average_time_bugfix} shows the result that the average time in days that it takes to fix bugs in each of selected projects.  
+To study more about these different projects we conduct another analysis to find the average time it takes to fix a bug that reported for releases. We use Github issue tracker to extract all information related to bugs and then we grouped them by releases. Then the average time it takes since the bug was created to the date it has closed is calculated. Table \ref{tab:average_time_bugfix} shows the result that the average time in days that it takes to fix bugs in each of selected projects. Figure \ref{fig:avg_issue_fix} also shows the average time it takes to get issues got fixed in all JavaScript projects.
+  
 \par 
-What interesting fact we found is that Bootstrap has the least number of days taken to fix a bug. Considering number of developers Bootstrap has based on Figure \ref{fig:number_of_developers} we found that this project has one of the most active communities among other projects. While Less.js is a project that on average it takes 113 days to get a bug fixed with fewer developers. 
+Interesting fact we found is that Bootstrap has the least number of days taken to fix a bug. Considering number of developers Bootstrap has based on Figure \ref{fig:number_of_developers} we found that this project has one of the most active communities among other projects. To support our hypothesis on correlation of number of developers and the time to fix a bug, we can see Less.js is a project that on average takes 113 days to get a bug fixed with fewer developers. 
 \par
-\textit{Underscore} has a good response and fixed rate among projects. While we are comparing the rate of bug fixing, we observe that Underscore is also one of the projects that has large number of developers contributing to the project. By having deeper observation into the data, we found out that number of developers are positively correlated to the time it takes to fix and close a bug.
+\textit{Underscore} has a good response and fixed rate among projects. While we are comparing the rate of bug fixing, we observe that Underscore is also one of the projects that has large number of developers contributing to the project. 
 
-\par For project \textit{q} it takes on average 30 days to fix bugs. By looking at number of developers we found out it has comparably less developers as compare to other projects but we have to take into account the fact of projects size and scale are in different order. A project that has fewer functionality might has fewer bugs and as a consequence less time would it take to fix a bug.
+\par For project \textit{q} it takes on average 30 days to fix bugs. By looking at number of developers we found out it has comparably less developers as compare to other projects but we have to take into account the fact of projects size and scale are in different order. A project that has fewer functionality might has fewer bugs and as a consequence less time would it take to fix a bug. We proved in JavaScript projects, number of developers are positively correlated to the time it takes to fix and close a bug.
 
 \vspace{3 mm}
 \noindent{\rqiv}
 \vspace{3 mm}
 
-We use SonarQube to use its various rules for finding code smells in JavaScript projects. Utilizing SonarQube give us the ability to extract code smells with different severity. To explain it more we list following rules as an example for issues with different severity:
+We use SonarQube to use its various rules for finding code smells in JavaScript projects. Utilizing SonarQube gives us the ability to extract code smells with different severity. To explain it more we list following rules as an example for code smells with different severity:
 
 	\begin{table*}[!hbt]
 		\begin{center}
@@ -396,7 +395,7 @@ doSomething();
 \end{itemize}
 
 
-Table \ref{tab:bad_smell_evolution_overview} shows the evolution of bad smells with different severities. Most of projects has no or few Blocker smells.  Except project \textit{Grunt} we observed that all project start with zero or less than two blocker bugs. Project \textit{node-mysql} starts with 2 blocker issues and it had 27 in the last release. The weight of Major smells revealed that lacking of a good static code checker and compiler let developers to have more and more rule violations with our any warning from absent compiler in JavaScript. Although JavaScript developers use source code inspection tools such as \textit{JSLint} and \textit{JSHint} we still see rule violation in such a huge extent as compare to Java projects. Statically typed languages such as Java would not let developer to have piece of code that violates type casting rules or having an undeclared variable.
+Table \ref{tab:bad_smell_evolution_overview} shows the evolution of bad smells grouped by their severity. Most of projects has no or few Blocker smells. Except project \textit{Grunt}. We observed that all project start with zero or less than two blocker bugs. Project \textit{node-mysql} starts with 2 blocker issues and it had 27 in the last release. The weight of Major smells revealed that lacking of a good static code checker and compiler let developers to have more rule violations without any notice. Although JavaScript developers use source code inspection tools such as \textit{JSLint} and \textit{JSHint}, we still see rule violations exist in such a huge extent as compare to Java projects. Statically typed languages such as Java would not let developer to have piece of code that violates type casting rules or having an undeclared variable. In the future work explain how comparison between Java and JavaScript can show us unraveled characteristics of evolution in these two different paradigm of programming. 
 	
 	
 	
