@@ -1,0 +1,61 @@
+--installing with brew
+https://www.codefellows.org/blog/three-battle-tested-ways-to-install-postgresql
+
+--manipulating dates in postgresql
+http://www.postgresql.org/docs/8.2/static/functions-formatting.html
+http://www.postgresql.org/docs/8.2/static/functions-comparison.html
+
+==Create a index==
+ create index author_dt_idx on git_commit_backup (author_dt);
+
+==change config file==
+cd /etc/postgresql/9.3/main/
+postgresql.conf
+
+==restarting the data base==
+sudo su -
+/etc/init.d/postgresql stop/start
+
+==Creating and dropping a db==
+#Create a db
+create database <db_name> owner <owner>
+
+#Drop db
+drop database <db_name>
+
+#backup a db
+pg_dump -Fc -U<user_name> <db_name> > ~/Desktop/re.dump
+pg_dump -Fc -Ure re > ~/Desktop/re_full.dump
+
+#restore a db
+pg_restore -U evermal -d comment_classification  -c  ~/Dropbox/research/technical_debt_classification/raw_data.dump
+
+
+x`#Open a db
+psql <db_name>
+
+#list all dbs
+ \l
+ 
+#show table in db
+\d
+
+#show schema for table
+\d <table_name>
+
+#quit
+\q
+
+#dump command to a file (example)
+\o '/tmp/ap_test.in'                                                                                                                                                                          
+select msg_id, log from rev_or_not ;                                                                                                                                                          
+\o      
+
+#run a file from the commandline (example basic.sql)
+psql <db_name> -f <file>.sql
+
+#the history is stored
+~/.psql_history
+
+-- extract files to csv
+copy (select * from metrics_data where project_name = 'mongoose' order by release_date) to '/var/lib/postgresql/snapshot_ids.csv' (format csv);
